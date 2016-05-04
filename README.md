@@ -17,9 +17,13 @@ xxx
 yyy
 zzz
 lkasdjflksdf
+<<<<<<< HEAD
 >>>>>>> f5d8e51d27bbfde307c53c4cd5af89a3e1abc7c2
 
 
 
 
 gehts oder gehts nicht??????
+=======
+iweiojiowef
+>>>>>>> a633a3ab04d0371167637c2ea6f9373df6faabe1
