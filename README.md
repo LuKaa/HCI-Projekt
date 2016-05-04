@@ -28,4 +28,10 @@ gehts oder gehts nicht??????................
 iweiojiowef
 >>>>>>> a633a3ab04d0371167637c2ea6f9373df6faabe1
 
+<<<<<<< HEAD
 hello from the other side
+=======
+
+
+versuch zum ändern!
+>>>>>>> 0d02606552a842cbf6eceeed2829a1b68c2286f0
