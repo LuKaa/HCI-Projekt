@@ -1,5 +1,14 @@
 angular.module('starter.controllers', [])
 
+.controller('KontenVerwaltenCtrl', function($scope, Konten) {
+  $scope.kontenliste = Konten.all();
+})
+
+.controller('KontoDetailCtrl', function($scope, $stateParams, Konten) {
+  $scope.konto = Konten.get($stateParams.kontoId);
+
+})
+
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called

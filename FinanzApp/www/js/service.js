@@ -4,17 +4,41 @@ angular.module('starter.services', [])
   var treffer; //ist variable wenn eine übereinstimmung beim suchen gefunden wurde
   
   //basic liste erstellen, nur namen sind befüllt, denn alles andere wird autmatisch aus den Web geladen.
-  var kontenliste=
-   [{ bezeichnung: 'Cash', IBAN: "" ,BIC:"", konoNr:"", konoPW:"", bankIstitut:"GeldBoerse", umsatzList:[{kategorie:"mobilitaet",beschreibung:"beschr",betrag:"45.00"}]},
-    { bezeichnung: 'Konto1', IBAN: "AT611904300234573278" ,BIC:"DABAIE2D", konoNr:"65135", konoPW:"23216", bankIstitut:"BankAustria", umsatzList:[{kategorie:"mobilitaet",beschreibung:"beschr",betrag:"45.00"}]}
-   ];
+  var kontenliste= [{ 
+        id:0, 
+        bezeichnung: 'Cash', 
+        IBAN: "" ,
+        BIC:"", 
+        konoNr:"", 
+        konoPW:"", 
+        bankIstitut:"GeldBoerse", 
+        umsatzList:[{kategorie:"mobilitaet",beschreibung:"beschr",betrag:"45.00"}]
+      },{ 
+        id:1,
+        bezeichnung: 'Konto1', 
+        IBAN: "AT611904300234573278" ,
+        BIC:"DABAIE2D", 
+        konoNr:"65135", 
+        konoPW:"23216", 
+        bankIstitut:"BankAustria", 
+        umsatzList:[{kategorie:"mobilitaet",beschreibung:"beschr",betrag:"45.00"}]
+    }];
     
     return{
       //Ab hier Funktionen
       
       //liefert einfach die gesamte Ortliste
       getAll: function (){
-        return ortList;
+        return kontenliste;
       },
-    }
+      
+      get: function(kontoId) {
+        for (var i = 0; i < kontenliste.length; i++) {
+          if (kontenliste[i].id === parseInt(kontoId)) {
+            return kontenliste[i];
+          }
+        }
+        return null;
+      }
+    };
 });

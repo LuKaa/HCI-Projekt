@@ -54,15 +54,25 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/kontenVerwalten',
     views: {
       'menuContent': {
-        templateUrl: 'templates/t.kontenVerwalten.html'
+        templateUrl: 'templates/t.kontenVerwalten.html',
+        controller: 'KontenVerwaltenCtrl'
       }
     }
   })
-  .state('app.stadistik', {
-    url: '/stadistik',
+  .state('app.kontoDetail', {
+    url: '/konten/:kontoId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/t.stadistik.html'
+        templateUrl: 'templates/t.kontoDetail.html',
+        controller: 'KontoDetailCtrl'
+      }
+    }
+  })
+  .state('app.statistik', {
+    url: '/statistik',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.statistik.html'
       }
     }
   })
