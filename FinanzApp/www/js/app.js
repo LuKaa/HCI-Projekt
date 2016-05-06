@@ -32,6 +32,65 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
+
+  .state('app.bareingabe', {
+    url: '/bareingabe',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.bareingabe.html'
+      }
+    }
+  })
+  
+  .state('app.einstellungen', {
+    url: '/einstellungen',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.einstellungen.html'
+      }
+    }
+  })
+  .state('app.kontenVerwalten', {
+    url: '/kontenVerwalten',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.kontenVerwalten.html'
+      }
+    }
+  })
+  .state('app.stadistik', {
+    url: '/stadistik',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.stadistik.html'
+      }
+    }
+  })
+  .state('app.uebersicht', {
+    url: '/uebersicht',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.uebersicht.html'
+      }
+    }
+  })
+  .state('app.ueberweisung', {
+    url: '/ueberweisung',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.ueberweisung.html'
+      }
+    }
+  })
+  .state('app.umsatz', {
+    url: '/umsatz',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.umsatz.html'
+      }
+    }
+  })  
+/*
   .state('app.search', {
     url: '/search',
     views: {
@@ -59,6 +118,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
@@ -68,6 +128,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   });
+  */
+  
+  
+  
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/bareingabe');
 });
