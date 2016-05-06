@@ -9,18 +9,18 @@ angular.module('starter.services', [])
         bezeichnung: 'Cash', 
         IBAN: "" ,
         BIC:"", 
-        konoNr:"", 
-        konoPW:"", 
-        bankIstitut:"GeldBoerse", 
+        kontoNr:"", 
+        kontoPW:"", 
+        bankInstitut:"GeldBoerse", 
         umsatzList:[{kategorie:"mobilitaet",beschreibung:"beschr",betrag:"45.00"}]
       },{ 
         id:1,
         bezeichnung: 'Konto1', 
         IBAN: "AT611904300234573278" ,
         BIC:"DABAIE2D", 
-        konoNr:"65135", 
-        konoPW:"23216", 
-        bankIstitut:"BankAustria", 
+        kontoNr:"65135", 
+        kontoPW:"23216", 
+        bankInstitut:"BankAustria", 
         umsatzList:[{kategorie:"mobilitaet",beschreibung:"beschr",betrag:"45.00"}]
     }];
     
