@@ -106,6 +106,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })  
+  
+  .state('app.umsatzDetail', {
+    url: '/umsatz/:kontoId/:kontoKat',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.umsatzDetail.html',
+        controller: 'UmsatzDetailController'
+      }
+    }
+  })  
 /*
   .state('app.search', {
     url: '/search',

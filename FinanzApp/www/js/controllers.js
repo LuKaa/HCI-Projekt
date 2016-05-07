@@ -32,6 +32,12 @@ angular.module('starter.controllers', [])
 })
 
 
+.controller('UmsatzDetailController', function($scope, $stateParams,FinanzService) {
+  umsatzlist = FinanzService.getUmsatzList($stateParams.kontoId,$stateParams.kontoKat);
+  umsatzlist = FinanzService.convertDates2Read(umsatzlist);
+  $scope.umsatzlist = umsatzlist;
+})
+
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 

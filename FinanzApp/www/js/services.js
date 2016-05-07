@@ -15,7 +15,7 @@ angular.module('starter.services', [])
         gesamtbetragOTF:0,
         bezuegebetragOTF:0,
         abzuegebetragOTF:0,  
-        umsatzList:[{kategorie:"mobilitaet",beschreibung:"beschr",betrag:45.01}]
+        umsatzList:[{posID:0, datum:"2014-02-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:45.01}]
       },{ 
         id:1,
         bezeichnung: 'Bankkonto', 
@@ -27,10 +27,10 @@ angular.module('starter.services', [])
         gesamtbetragOTF:0,
         bezuegebetragOTF:0,
         abzuegebetragOTF:0, 
-        umsatzList:[{kategorie:"mobilitaet",beschreibung:"beschr",betrag:20.33},
-                    {kategorie:"mobilitaet",beschreibung:"beschr",betrag:12.99},
-                    {kategorie:"mobilitaet",beschreibung:"beschr",betrag:-8.11},
-                    {kategorie:"mobilitaet",beschreibung:"beschr",betrag:4.00}]
+        umsatzList:[{posID:0, datum:"2014-01-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:20.33},
+                    {posID:1, datum:"2014-08-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:12.99},
+                    {posID:2, datum:"2014-12-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:-8.11},
+                    {posID:3, datum:"2015-11-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:4.00}]
     }];
     
     return{
@@ -97,5 +97,37 @@ angular.module('starter.services', [])
         return konto;
       },
       
+      
+      convertDates2Read: function(umsatzList) {
+        
+        for (var i = 0; i < umsatzList.length; i++) {
+          d = new Date(umsatzList[i].datum)
+          
+          
+          console.log(d.getHours()+":"+d.getMinutes()+" "+d.getDay()+"."+d.getMonth()+"."+d.getYear());
+          umsatzList[i].datum= d.getHours()+":"+d.getMinutes()+" "+d.getDay()+"."+d.getMonth()+"."+d.getFullYear();
+        }
+        
+        return umsatzList;
+      },
+      
+      getUmsatzList: function(kontoId,kontoKat) {
+        console.log(" sss" +  kontoId +" " + kontoKat);
+        umsatzList = [];
+        counter=0;
+        
+        //finde das Passende konto
+        for (var i = 0; i < kontenliste.length; i++) {
+          if (kontenliste[i].id === parseInt(kontoId)) {
+            //nimm die Kategorie
+            for (var j = 0; j < kontenliste[i].umsatzList.length; j++) {
+              if (kontenliste[i].umsatzList[j].kategorie === "Mobilitaet") {
+                umsatzList[counter++]=kontenliste[i].umsatzList[j];
+              }
+            }
+          }
+        }
+        return umsatzList;
+      }      
     };
 });

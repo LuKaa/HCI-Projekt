@@ -1,5 +1,16 @@
 <ion-view view-title="umsatzDetail">
   <ion-content>
-    <h1>s</h1>
+    <div class="button-bar">
+        <a class="button" href="#/app/umsatz/0/Mobilitaet">Cash</a>
+        <a class="button" href="#/app/umsatz/1/Mobilitaet">Bankkonto</a>
+        <a class="button" href="#/app/umsatz/2/Mobilitaet">Gesamt</a>
+    </div>
+    <ion-list>
+      <ion-item ng-repeat="position in umsatzlist" href="">
+        <div style="display:block; text-align:left; float:left;">{{position.datum}} </div>
+        <div style="display:block; text-align:right;">{{position.betrag}}</div>
+        {{position.betrag}}
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
