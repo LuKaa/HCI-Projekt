@@ -98,10 +98,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
   .state('app.umsatz', {
-    url: '/umsatz',
+    url: '/umsatz/:kontoId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/t.umsatz.html'
+        templateUrl: 'templates/t.umsatz.html',
+        controller: 'UmsatzController'
       }
     }
   })  

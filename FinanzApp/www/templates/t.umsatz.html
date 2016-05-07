@@ -1,14 +1,18 @@
-<ion-view view-title="Umsatz">
+<ion-view view-title="Umsatz {{konto.bezeichnung}}">
   <ion-content>
     <div class="button-bar">
-        <a class="button">KontaA</a>
-        <a class="button">KontoB</a>
-        <a class="button">KontoC</a>
+        <a class="button" href="#/app/umsatz/0">Cash</a>
+        <a class="button" href="#/app/umsatz/1">Bankkonto</a>
+        <a class="button" href="#/app/umsatz/2">Gesamt</a>
     </div>
-    Summe der Gutschriften: <br>
-    Summe der Abzuege: <br>
-    Saldo: <br>
     
+    
+    <div class="row">
+        <div class="col" style="color:#00FF00; text-align: center;">Bezug {{konto.bezuegebetragOTF}}</div>
+        <div class="col" style="color:#FF0000; text-align: center;">Abzug {{konto.abzuegebetragOTF}}</div>
+        <div class="col text-align: center;">Ges {{konto.gesamtbetragOTF}}</div>
+    </div>
+    <br>
     <div class="row">
         <div class="col">
             <a href="" class="button button-icon">

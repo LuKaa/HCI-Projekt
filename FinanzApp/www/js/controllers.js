@@ -10,6 +10,29 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('UmsatzController', function($scope, $stateParams,FinanzService) {
+  $scope.kontenliste = FinanzService.getAll();
+  konto = FinanzService.get($stateParams.kontoId);
+  //wenn es das konto nicht gibt wird das gesamtkono bestimmt
+  if(konto==null){
+    
+    kontoTemp = FinanzService.getGesamtkonto();
+    kontoTemp=FinanzService.berechneGesamtbetragOTF(kontoTemp);
+    
+    //console.log("asdsad  "+kontoTemp.gesamtbetragOTF);
+    
+    $scope.konto=kontoTemp;
+    
+  }else{
+    
+    $scope.konto=FinanzService.berechneGesamtbetragOTF(konto);
+  }
+  
+
+})
+
+
+
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
