@@ -12,10 +12,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('KontoHinzufuegenCtrl', function($scope, FinanzService) {
+.controller('KontoHinzufuegenCtrl', function($scope, $location, FinanzService) {
   $scope.save = function(konto) {
     FinanzService.save(konto);
+    $location.path("/app/kontenVerwalten"); 
   }
+    
+
 })
 
 .controller('UmsatzController', function($scope, $stateParams,FinanzService) {
