@@ -28,9 +28,28 @@ angular.module('starter.services', [])
         bezuegebetragOTF:0,
         abzuegebetragOTF:0, 
         umsatzList:[{posID:0, datum:"2011-01-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:20.33},
-                    {posID:1, datum:"2015-08-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:12.99},
-                    {posID:2, datum:"2014-12-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:-8.11},
-                    {posID:3, datum:"2010-11-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:4.00}]
+                    {posID:1, datum:"2014-01-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:12.23},
+                    {posID:1, datum:"2014-02-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:45.99},
+                    {posID:1, datum:"2014-03-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:-12.12},
+                    {posID:1, datum:"2014-04-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:21.99},
+                    {posID:1, datum:"2014-05-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:-12.78},
+                    {posID:1, datum:"2014-06-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:45.99},
+                    {posID:1, datum:"2014-07-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:12.12},
+                    {posID:1, datum:"2014-08-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:2.99},
+                    {posID:1, datum:"2014-09-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:12.99},
+                    {posID:1, datum:"2014-10-01T23:28:56.782Z", kategorie:"Lebensmittel",beschreibung:"beschr",betrag:-1.99},
+                    {posID:1, datum:"2014-11-01T23:28:56.782Z", kategorie:"Lebensmittel",beschreibung:"beschr",betrag:92.78},
+                    {posID:1, datum:"2014-12-01T23:28:56.782Z", kategorie:"Lebensmittel",beschreibung:"beschr",betrag:12.21},
+                    {posID:1, datum:"2015-01-01T23:28:56.782Z", kategorie:"Lebensmittel",beschreibung:"beschr",betrag:-22.99},
+                    {posID:1, datum:"2015-02-01T23:28:56.782Z", kategorie:"Freizeit",beschreibung:"beschr",betrag:233.12},
+                    {posID:1, datum:"2015-03-01T23:28:56.782Z", kategorie:"Freizeit",beschreibung:"beschr",betrag:-4538.99},
+                    {posID:1, datum:"2015-04-01T23:28:56.782Z", kategorie:"Freizeit",beschreibung:"beschr",betrag:12.85},
+                    {posID:1, datum:"2015-05-01T23:28:56.782Z", kategorie:"Freizeit",beschreibung:"beschr",betrag:4523.99},
+                    {posID:1, datum:"2015-06-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:453.12},
+                    {posID:1, datum:"2015-07-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:12.99},
+                    {posID:1, datum:"2015-08-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:12.99},
+                    {posID:2, datum:"2007-12-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:-8.11},
+                    {posID:3, datum:"2010-11-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:4.00}]
     }];
     
     return{
@@ -53,6 +72,8 @@ angular.module('starter.services', [])
         }
         return null;
       },
+      
+      
       //Meine Funktionen Markus
       getGesamtkonto: function (){
         kontoTemp= { 
@@ -124,8 +145,6 @@ angular.module('starter.services', [])
       
       
       sortbyDate: function(umsatzList) {
-        
-        
       var length = umsatzList.length;
         for(var i = 1; i < length; ++i) {
           for(var j = 0; j < i; ++j) {
@@ -141,6 +160,26 @@ angular.module('starter.services', [])
        
        
         return umsatzList;
+       
+       
+      },
+      
+      cleanNachKat: function(umsatzList,kontoKat) {
+        
+        if(kontoKat.valueOf()==new String("Gesamt").valueOf()){
+            return umsatzList;
+          }
+          console.log(kontoKat.valueOf()+" gggg")
+          
+        cleanedUmsatzliste=[];
+        counter=0;
+        for(var i = 0; i < umsatzList.length; ++i) {
+          
+          if(umsatzList[i].kategorie.valueOf()==kontoKat.valueOf()){
+            cleanedUmsatzliste[counter++] = umsatzList[i];
+          }
+        }
+        return cleanedUmsatzliste;
        
        
       },

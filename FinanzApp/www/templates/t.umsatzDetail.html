@@ -1,9 +1,9 @@
 <ion-view view-title="Detail: {{konto.bezeichnung}} {{kategorie}}">
   <ion-content>
     <div class="button-bar">
-        <a class="button" href="#/app/umsatz/0/Mobilitaet">Cash</a>
-        <a class="button" href="#/app/umsatz/1/Mobilitaet">Bankkonto</a>
-        <a class="button" href="#/app/umsatz/2/Mobilitaet">Gesamt</a>
+        <a class="button" href="#/app/umsatz/0/{{kategorie}}">Cash</a>
+        <a class="button" href="#/app/umsatz/1/{{kategorie}}">Bankkonto</a>
+        <a class="button" href="#/app/umsatz/2/{{kategorie}}">Gesamt</a>
     </div>
     <ion-list>
       <ion-item ng-repeat="position in umsatzlist" href="">
