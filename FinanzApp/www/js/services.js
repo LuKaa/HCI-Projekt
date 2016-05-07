@@ -44,6 +44,10 @@ angular.module('starter.services', [])
       remove: function(konto) {
       kontenliste.splice(kontenliste.indexOf(konto), 1);
       },
+      
+      save: function(konto) {
+      kontenliste.push(konto);
+      },
     
       get: function(kontoId) {
         for (var i = 0; i < kontenliste.length; i++) {

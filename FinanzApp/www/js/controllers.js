@@ -12,6 +12,12 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('KontoHinzufuegenCtrl', function($scope, FinanzService) {
+  $scope.save = function(konto) {
+    FinanzService.save(konto);
+  }
+})
+
 .controller('UmsatzController', function($scope, $stateParams,FinanzService) {
   $scope.kontenliste = FinanzService.getAll();
   konto = FinanzService.get($stateParams.kontoId);
