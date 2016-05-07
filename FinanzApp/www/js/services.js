@@ -55,15 +55,27 @@ angular.module('starter.services', [])
     return{
       //Ab hier Funktionen
       
-      //liefert einfach die gesamte Ortliste
+      //liefert die gesamte Kontoliste
       getAll: function (){
         return kontenliste;
       },
       
+      //Konto löschen
       remove: function(konto) {
       kontenliste.splice(kontenliste.indexOf(konto), 1);
       },
+      
+      //Konto hinzufügen
+      save: function(konto) {
+        konto.id = kontenliste.length;
+        konto.gesamtbetragOTF=0;
+        konto.bezuegebetragOTF=0;
+        konto.abzuegebetragOTF=0;
+        
+        kontenliste.push(konto);
+      },
     
+      //liefert ein bestimmtes Konto
       get: function(kontoId) {
         for (var i = 0; i < kontenliste.length; i++) {
           if (kontenliste[i].id === parseInt(kontoId)) {
@@ -72,7 +84,6 @@ angular.module('starter.services', [])
         }
         return null;
       },
-      
       
       //Meine Funktionen Markus
       getGesamtkonto: function (){
@@ -142,6 +153,7 @@ angular.module('starter.services', [])
         str+=date.toString().slice(11,16); //Stunde+Miute
         return str;
       },
+      
       
       
       sortbyDate: function(umsatzList) {

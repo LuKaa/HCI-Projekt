@@ -78,7 +78,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'menuContent': {
         templateUrl: 'templates/t.kontoHinzufuegen.html',
-       
+       controller: 'KontoHinzufuegenCtrl'
+      }
+    }
+  })
+  .state('app.kontakte', {
+    url: '/kontakte',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.kontakte.html',
       }
     }
   })
