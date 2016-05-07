@@ -1,11 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('KontenVerwaltenCtrl', function($scope, Konten) {
-  $scope.kontenliste = Konten.all();
+.controller('KontenVerwaltenCtrl', function($scope,FinanzService) {
+  $scope.kontenliste = FinanzService.getAll();
+  
 })
 
-.controller('KontoDetailCtrl', function($scope, $stateParams, Konten) {
-  $scope.konto = Konten.get($stateParams.kontoId);
+.controller('KontoDetailCtrl', function($scope, $stateParams,FinanzService) {
+  $scope.konto = FinanzService.get($stateParams.kontoId);
 
 })
 
