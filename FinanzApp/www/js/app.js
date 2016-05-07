@@ -82,6 +82,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  .state('app.kontakte', {
+    url: '/kontakte',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.kontakte.html',
+      }
+    }
+  })
   .state('app.statistik', {
     url: '/statistik',
     views: {
