@@ -73,6 +73,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  .state('app.kontoHinzufuegen', {
+    url: '/kontoHinzufuegen',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.kontoHinzufuegen.html',
+       
+      }
+    }
+  })
   .state('app.statistik', {
     url: '/statistik',
     views: {

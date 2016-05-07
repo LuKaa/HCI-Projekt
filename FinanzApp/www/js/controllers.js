@@ -2,7 +2,9 @@ angular.module('starter.controllers', [])
 
 .controller('KontenVerwaltenCtrl', function($scope,FinanzService) {
   $scope.kontenliste = FinanzService.getAll();
-  
+  $scope.remove = function(konto) {
+    FinanzService.remove(konto);
+  };
 })
 
 .controller('KontoDetailCtrl', function($scope, $stateParams,FinanzService) {

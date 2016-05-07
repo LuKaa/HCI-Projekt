@@ -41,6 +41,10 @@ angular.module('starter.services', [])
         return kontenliste;
       },
       
+      remove: function(konto) {
+      kontenliste.splice(kontenliste.indexOf(konto), 1);
+      },
+    
       get: function(kontoId) {
         for (var i = 0; i < kontenliste.length; i++) {
           if (kontenliste[i].id === parseInt(kontoId)) {
