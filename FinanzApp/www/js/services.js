@@ -27,10 +27,10 @@ angular.module('starter.services', [])
         gesamtbetragOTF:0,
         bezuegebetragOTF:0,
         abzuegebetragOTF:0, 
-        umsatzList:[{posID:0, datum:"2014-01-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:20.33},
-                    {posID:1, datum:"2014-08-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:12.99},
+        umsatzList:[{posID:0, datum:"2011-01-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:20.33},
+                    {posID:1, datum:"2015-08-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:12.99},
                     {posID:2, datum:"2014-12-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:-8.11},
-                    {posID:3, datum:"2015-11-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:4.00}]
+                    {posID:3, datum:"2010-11-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:4.00}]
     }];
     
     return{
@@ -101,18 +101,49 @@ angular.module('starter.services', [])
       convertDates2Read: function(umsatzList) {
         
         for (var i = 0; i < umsatzList.length; i++) {
-          d = new Date(umsatzList[i].datum)
-          
-          
-          console.log(d.getHours()+":"+d.getMinutes()+" "+d.getDay()+"."+d.getMonth()+"."+d.getYear());
-          umsatzList[i].datum= d.getHours()+":"+d.getMinutes()+" "+d.getDay()+"."+d.getMonth()+"."+d.getFullYear();
+          umsatzList[i].datum= this.dateToString(umsatzList[i].datum);
         }
         
         return umsatzList;
       },
       
+      
+      dateToString: function(date) {
+        str="";
+        //"2015-11-01T23:28:56.782Z"
+        str+=date.toString().slice(8,10)+"."; //Tag 
+        str+=date.toString().slice(5,7)+"."; //Monat
+        str+=date.toString().slice(2,4)+" "; //Jahr
+        str+=date.toString().slice(11,16); //Stunde+Miute
+        return str;
+      },
+      
+      
+      sortbyDate: function(umsatzList) {
+        
+        
+      var length = umsatzList.length;
+        for(var i = 1; i < length; ++i) {
+          for(var j = 0; j < i; ++j) {
+            x = new Date(umsatzList[i].datum);
+            y = new Date(umsatzList[j].datum);
+            if(x>y){
+              temp=umsatzList[i];
+              umsatzList[i]=umsatzList[j];
+              umsatzList[j]=temp;
+            }
+          }
+        }
+       
+       
+        return umsatzList;
+       
+       
+      },
+      
       getUmsatzList: function(kontoId,kontoKat) {
-        console.log(" sss" +  kontoId +" " + kontoKat);
+               
+        
         umsatzList = [];
         counter=0;
         

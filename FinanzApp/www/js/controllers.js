@@ -32,10 +32,39 @@ angular.module('starter.controllers', [])
 })
 
 
+
 .controller('UmsatzDetailController', function($scope, $stateParams,FinanzService) {
-  umsatzlist = FinanzService.getUmsatzList($stateParams.kontoId,$stateParams.kontoKat);
-  umsatzlist = FinanzService.convertDates2Read(umsatzlist);
-  $scope.umsatzlist = umsatzlist;
+  //konto zur verfügung stellen
+  konto = FinanzService.get($stateParams.kontoId);
+  //kategorie zum anzeigen
+  $scope.kategorie=$stateParams.kontoKat;
+  //wen gesamt ist
+  if(konto==null){
+    //gesamt konto generierne lassen
+    kontoTemp = FinanzService.getGesamtkonto();
+    //kont an das scop hängen 
+    $scope.konto=kontoTemp;
+    
+    //Umsatzliste erstellen
+    umsatzlist = kontoTemp.umsatzList;
+    cpUmsatzliste= angular.copy(umsatzlist);//damit die daten nur temporaer geändert werden
+    cpUmsatzliste=FinanzService.sortbyDate(cpUmsatzliste);//sort
+    cpUmsatzliste = FinanzService.convertDates2Read(cpUmsatzliste);//Lesbares Datumsformat
+    $scope.umsatzlist = cpUmsatzliste;
+    
+  }else{//wenn ja konto da ist
+    $scope.konto=konto;
+    
+    //Umsatzliste erstellen
+    umsatzlist = FinanzService.getUmsatzList($stateParams.kontoId,$stateParams.kontoKat);
+    cpUmsatzliste= angular.copy(umsatzlist);//damit die daten nur temporaer geändert werden
+    cpUmsatzliste=FinanzService.sortbyDate(cpUmsatzliste);//sort
+    cpUmsatzliste = FinanzService.convertDates2Read(cpUmsatzliste);//Lesbares Datumsformat
+    $scope.umsatzlist = cpUmsatzliste;
+  }
+  
+  
+  
 })
 
 
