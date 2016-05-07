@@ -46,7 +46,12 @@ angular.module('starter.services', [])
       },
       
       save: function(konto) {
-      kontenliste.push(konto);
+        konto.id = kontenliste.length;
+        konto.gesamtbetragOTF=0;
+        konto.bezuegebetragOTF=0;
+        konto.abzuegebetragOTF=0;
+        
+        kontenliste.push(konto);
       },
     
       get: function(kontoId) {

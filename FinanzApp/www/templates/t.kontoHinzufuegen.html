@@ -4,14 +4,23 @@
   
      
      <form>
-      <label class="item item-input">
-        <input type="text" placeholder="IBAN" ng-model="konto.iban">
+       <label class="item item-input">
+        <input type="text" placeholder="Bezeichnung" ng-model="konto.bezeichnung">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="BIC" ng-model="konto.bic">
+        <input type="text" placeholder="IBAN" ng-model="konto.IBAN">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Bankinstitut" ng-model="konto.insitut">
+        <input type="text" placeholder="BIC" ng-model="konto.BIC">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Kontonummer" ng-model="konto.kontoNr">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Passwort" ng-model="konto.kontoPW">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Bankinstitut" ng-model="konto.bankInstitut">
       </label>
       
       <button ng-click="save(konto)" class="button button-full button-dark"> 
