@@ -51,7 +51,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/einstellungen',
     views: {
       'menuContent': {
-        templateUrl: 'templates/t.einstellungen.html'
+        templateUrl: 'templates/t.einstellungen.html',
+        controller: 'EigenschaftenCtrl'
       }
     }
   })
