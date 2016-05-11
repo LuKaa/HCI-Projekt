@@ -74,6 +74,21 @@ angular.module('starter.services', [])
         
         kontenliste.push(konto);
       },
+      
+       //Passwort prüfen
+      checkPw: function(konto) {
+        if(konto.passwort !=konto.passwort2)
+        {
+          return 0;
+        }
+        return 1;
+      },
+      
+      //Passwort speichern
+      savePw: function(konto) {
+        id = kontenliste.indexOf(konto);
+        //...
+      },
     
       //liefert ein bestimmtes Konto
       get: function(kontoId) {

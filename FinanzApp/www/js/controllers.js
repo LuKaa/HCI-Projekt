@@ -17,8 +17,21 @@ angular.module('starter.controllers', [])
     FinanzService.save(konto);
     $location.path("/app/kontenVerwalten"); 
   }
-    
+})
 
+.controller('EigenschaftenCtrl', function($scope, $location, FinanzService) {
+  $scope.checkPw = function(konto) {
+    FinanzService.checkPw(konto);
+  }
+  if(checkPw==1)
+  {
+    $scope.checkPw=1;
+    FinanzService.savePw(konto);
+  }
+  else
+  {
+    $scope.checkPw=0;
+  }
 })
 
 .controller('UmsatzController', function($scope, $stateParams,FinanzService) {
