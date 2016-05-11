@@ -20,7 +20,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('EigenschaftenCtrl', function($scope, $location, FinanzService) {
-  $scope.checkPw = function(konto) {
+ /* $scope.checkPw = function(konto) {
     FinanzService.checkPw(konto);
   }
   if(checkPw==1)
@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
   else
   {
     $scope.checkPw=0;
-  }
+  }*/
 })
 
 .controller('UmsatzController', function($scope, $stateParams,FinanzService) {
