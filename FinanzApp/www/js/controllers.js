@@ -73,7 +73,9 @@ angular.module('starter.controllers', [])
     umsatzlist = kontoTemp.umsatzList;
     cpUmsatzliste= angular.copy(umsatzlist);//damit die daten nur temporaer geändert werden
     cpUmsatzliste=FinanzService.cleanNachKat(cpUmsatzliste,$stateParams.kontoKat);//die nicht die passende Kat haben weg hauen
+    cpUmsatzliste=FinanzService.machValidDateFormat(cpUmsatzliste);//zeige DatumFormat mit 2 Kommerstellen an.
     cpUmsatzliste=FinanzService.sortbyDate(cpUmsatzliste);//sort
+    cpUmsatzliste=FinanzService.makeMonthRev(cpUmsatzliste);
     cpUmsatzliste = FinanzService.convertDates2Read(cpUmsatzliste);//Lesbares Datumsformat
     $scope.umsatzlist = cpUmsatzliste;
     
@@ -81,10 +83,12 @@ angular.module('starter.controllers', [])
     $scope.konto=konto;
     
     //Umsatzliste erstellen
-    umsatzlist = FinanzService.getUmsatzList($stateParams.kontoId,$stateParams.kontoKat);
+    umsatzlist = FinanzService.getUmsatzList($stateParams.kontoId);
     cpUmsatzliste= angular.copy(umsatzlist);//damit die daten nur temporaer geändert werden
     cpUmsatzliste=FinanzService.cleanNachKat(cpUmsatzliste,$stateParams.kontoKat);//die nicht die passende Kat haben weg hauen
+    cpUmsatzliste=FinanzService.machValidDateFormat(cpUmsatzliste);//zeige DatumFormat mit 2 Kommerstellen an.
     cpUmsatzliste=FinanzService.sortbyDate(cpUmsatzliste);//sort
+    cpUmsatzliste=FinanzService.makeMonthRev(cpUmsatzliste);
     cpUmsatzliste = FinanzService.convertDates2Read(cpUmsatzliste);//Lesbares Datumsformat
     $scope.umsatzlist = cpUmsatzliste;
   }

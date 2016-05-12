@@ -31,11 +31,11 @@ angular.module('starter.services', [])
                     {posID:1, datum:"2014-01-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:12.23},
                     {posID:1, datum:"2014-02-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:45.99},
                     {posID:1, datum:"2014-03-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:-12.12},
-                    {posID:1, datum:"2014-04-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:21.99},
+                    {posID:1, datum:"2014-04-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:21.0},
                     {posID:1, datum:"2014-05-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:-12.78},
-                    {posID:1, datum:"2014-06-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:45.99},
+                    {posID:1, datum:"2014-06-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:45.00},
                     {posID:1, datum:"2014-07-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:12.12},
-                    {posID:1, datum:"2014-08-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:2.99},
+                    {posID:1, datum:"2014-08-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:2.00},
                     {posID:1, datum:"2014-09-01T23:28:56.782Z", kategorie:"Kleidung",beschreibung:"beschr",betrag:12.99},
                     {posID:1, datum:"2014-10-01T23:28:56.782Z", kategorie:"Lebensmittel",beschreibung:"beschr",betrag:-1.99},
                     {posID:1, datum:"2014-11-01T23:28:56.782Z", kategorie:"Lebensmittel",beschreibung:"beschr",betrag:92.78},
@@ -45,7 +45,7 @@ angular.module('starter.services', [])
                     {posID:1, datum:"2015-03-01T23:28:56.782Z", kategorie:"Freizeit",beschreibung:"beschr",betrag:-4538.99},
                     {posID:1, datum:"2015-04-01T23:28:56.782Z", kategorie:"Freizeit",beschreibung:"beschr",betrag:12.85},
                     {posID:1, datum:"2015-05-01T23:28:56.782Z", kategorie:"Freizeit",beschreibung:"beschr",betrag:4523.99},
-                    {posID:1, datum:"2015-06-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:453.12},
+                    {posID:1, datum:"2015-06-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:453},
                     {posID:1, datum:"2015-07-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:12.99},
                     {posID:1, datum:"2015-08-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:12.99},
                     {posID:2, datum:"2007-12-01T23:28:56.782Z", kategorie:"Sonstiges",beschreibung:"beschr",betrag:-8.11},
@@ -144,7 +144,9 @@ angular.module('starter.services', [])
             konto.abzuegebetragOTF+=konto.umsatzList[i].betrag;
           }
         }
-        
+        konto.gesamtbetragOTF =konto.gesamtbetragOTF.toFixed(2);
+        konto.abzuegebetragOTF=konto.abzuegebetragOTF.toFixed(2);
+        konto.bezuegebetragOTF=konto.bezuegebetragOTF.toFixed(2);
         return konto;
       },
       
@@ -160,12 +162,31 @@ angular.module('starter.services', [])
       
       
       dateToString: function(date) {
+        
+        var month = new Array();
+          month[0] = "Jänner";
+          month[1] = "Februar";
+          month[2] = "März";
+          month[3] = "April";
+          month[4] = "Mai";
+          month[5] = "Juni";
+          month[6] = "Juli";
+          month[7] = "August";
+          month[8] = "September";
+          month[9] = "Oktober";
+          month[10] = "November";
+          month[11] = "Dezember";
+        
         str="";
-        //"2015-11-01T23:28:56.782Z"
-        str+=date.toString().slice(8,10)+"."; //Tag 
-        str+=date.toString().slice(5,7)+"."; //Monat
-        str+=date.toString().slice(2,4)+" "; //Jahr
-        str+=date.toString().slice(11,16); //Stunde+Miute
+        if(date.toString().slice(0,9)=="!WildCat!")
+        {
+          str = month[parseInt(date.slice(10,12))]+ " " + date.slice(12,17) 
+        }else{
+          str+=date.toString().slice(8,10)+"."; //Tag 
+          str+=date.toString().slice(5,7)+"."; //Monat
+          str+=date.toString().slice(2,4)+" "; //Jahr
+          str+=date.toString().slice(11,16); //Stunde+Miute
+        }
         return str;
       },
       
@@ -194,9 +215,8 @@ angular.module('starter.services', [])
       cleanNachKat: function(umsatzList,kontoKat) {
         
         if(kontoKat.valueOf()==new String("Gesamt").valueOf()){
-            return umsatzList;
+          return umsatzList;
           }
-          console.log(kontoKat.valueOf()+" gggg")
           
         cleanedUmsatzliste=[];
         counter=0;
@@ -211,24 +231,55 @@ angular.module('starter.services', [])
        
       },
       
-      getUmsatzList: function(kontoId,kontoKat) {
+      
+      makeMonthRev: function(umsatzList) {
+        var counter =0;
+        var tempBetragCounter=0;   
+        var tempUmsatzlist=[];
+        for (var i = 0; i < umsatzList.length; i++) {
+            tempUmsatzlist[counter+i]=umsatzList[i];
+            tempBetragCounter += parseFloat(umsatzList[i].betrag);
+            if(umsatzList[i+1]!=null){
+              
+              if(umsatzList[i+1].datum.slice(5,7)<umsatzList[i].datum.slice(5,7)||umsatzList[i+1].datum.slice(2,4)!=umsatzList[i].datum.slice(2,4)){
+                counter++;
+                tempUmsatzlist.push({posID:"", datum:"", kategorie:"all",beschreibung:"",betrag:""});
+                tempUmsatzlist[counter+i].datum="!WildCat!"+umsatzList[i].datum.slice(5,7) + "." + umsatzList[i].datum.slice(0,4);
+                tempUmsatzlist[counter+i].beschreibung="Monatsübersicht (Saldo)";
+                tempUmsatzlist[counter+i].betrag=tempBetragCounter.toFixed(2);
+                tempBetragCounter=0;
+              }
+            }else{
+              counter++;
+              tempUmsatzlist.push({posID:"", datum:"", kategorie:"all",beschreibung:"",betrag:""});
+              tempUmsatzlist[counter+i].datum="!WildCat!"+umsatzList[i].datum.slice(5,7) + "." + umsatzList[i].datum.slice(0,4);
+              tempUmsatzlist[counter+i].beschreibung="Monatsübersicht (Saldo)";
+              tempUmsatzlist[counter+i].betrag=tempBetragCounter.toFixed(2);
+              tempBetragCounter=0;
+            }
+            
+        }
+        return tempUmsatzlist;
+      },
+      
+      machValidDateFormat: function(umsatzList) {
                
-        
-        umsatzList = [];
-        counter=0;
-        
+        for (var i = 0; i < umsatzList.length; i++) {
+           umsatzList[i].betrag = umsatzList[i].betrag.toFixed(2);
+        }
+        return umsatzList;
+      },
+      
+      getUmsatzList: function(kontoId) {
+               
+
         //finde das Passende konto
         for (var i = 0; i < kontenliste.length; i++) {
           if (kontenliste[i].id === parseInt(kontoId)) {
-            //nimm die Kategorie
-            for (var j = 0; j < kontenliste[i].umsatzList.length; j++) {
-              if (kontenliste[i].umsatzList[j].kategorie === "Mobilitaet") {
-                umsatzList[counter++]=kontenliste[i].umsatzList[j];
-              }
+             return kontenliste[i].umsatzList;
             }
           }
-        }
-        return umsatzList;
+        
       }      
     };
 });

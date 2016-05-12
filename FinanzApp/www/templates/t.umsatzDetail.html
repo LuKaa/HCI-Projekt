@@ -1,14 +1,31 @@
 <ion-view view-title="Detail: {{konto.bezeichnung}} {{kategorie}}">
   <ion-content>
-    <div class="button-bar">
-        <a class="button" href="#/app/umsatz/0/{{kategorie}}">Cash</a>
-        <a class="button" href="#/app/umsatz/1/{{kategorie}}">Bankkonto</a>
-        <a class="button" href="#/app/umsatz/2/{{kategorie}}">Gesamt</a>
+    
+     <div class="row">
+        <div class="col">
+            <div ng-if="konto.id=='0'"><a class="button button-full button-positive" href="#/app/umsatz/0/{{kategorie}}">Cash</a></div>
+            <div ng-if="konto.id!='0'"><a class="button button-full button-stable" href="#/app/umsatz/0/{{kategorie}}">Cash</a></div>
+        </div>
+        <div class="col">
+            <div ng-if="konto.id=='1'"><a class="button button-full button-positive" href="#/app/umsatz/1/{{kategorie}}">Bankkonto</a></div>
+            <div ng-if="konto.id!='1'"><a class="button button-full button-stable" href="#/app/umsatz/1/{{kategorie}}">Bankkonto</a></div>
+        </div>
+        <div class="col">
+            <div ng-if="konto.id=='2'"><a class="button button-full button-positive" href="#/app/umsatz/2/{{kategorie}}">Gesamt</a></div>
+            <div ng-if="konto.id!='2'"><a class="button button-full button-stable" href="#/app/umsatz/2/{{kategorie}}">Gesamt</a></div>
+        </div>
     </div>
+    
     <ion-list>
       <ion-item ng-repeat="position in umsatzlist" href="">
-        <div style="display:block; text-align:left; float:left;">{{position.datum}} <br> {{position.beschreibung}} </div>
-        <div style="display:block; text-align:right;">{{position.betrag}} €</div>
+        <div ng-if="position.beschreibung=='Monatsübersicht (Saldo)'">
+          <div style="display:block; text-align:left; float:left; font-weight: bold;">{{position.datum}} <br> {{position.beschreibung}} </div>
+          <div style="display:block; text-align:right; font-weight: bold;">{{position.betrag}} €</div>
+        </div>
+        <div ng-if="position.beschreibung!='Monatsübersicht (Saldo)'">
+          <div style="display:block; text-align:left; float:left;">{{position.datum}} <br> {{position.beschreibung}} </div>
+          <div style="display:block; text-align:right;">{{position.betrag}} €</div>
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>
