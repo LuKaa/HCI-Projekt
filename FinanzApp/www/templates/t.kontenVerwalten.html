@@ -1,8 +1,9 @@
 <ion-view view-title="KontenVerwalten">
  <ion-content>
-   <h1>Konten verwalten </h1>
-   <a class="button button-icon icon ion-plus-circled" href="#/app/kontoHinzufuegen"></a>
-    
+
+   <div class="row responsive-sm">
+     <a class="button button-icon icon ion-plus-circled" href="#/app/kontoHinzufuegen" ></a>
+    </div>
     <ion-list>
          
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="konto in kontenliste" type="item-text-wrap" href="#/app/konten/{{konto.id}}"">  
