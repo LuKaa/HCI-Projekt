@@ -3,6 +3,21 @@ angular.module('starter.services', [])
   
   var treffer; //ist variable wenn eine übereinstimmung beim suchen gefunden wurde
   
+  var kontakte = [
+    {
+      id:0,
+      nummer: '066412345678',
+      vn: 'Max',
+      nn: 'Mustermann'
+    },
+    {
+      id:1,
+      nummer: '1699345498798',
+      vn: 'Jane',
+      nn: 'Doe'
+    },
+  ];
+  
   //basic liste erstellen, nur namen sind befüllt, denn alles andere wird autmatisch aus den Web geladen.
   var kontenliste= [{ 
         id:0, 
@@ -54,6 +69,32 @@ angular.module('starter.services', [])
     
     return{
       //Ab hier Funktionen
+      
+      //liefert die gesamte Kontaktliste
+      getAllKontakte: function (){
+        return kontakte;
+      },
+      
+      //liefert einen bestimmten Kontakt
+      getKontakt: function(kontaktId) {
+        for (var i = 0; i < kontakte.length; i++) {
+          if (kontakte[i].id === parseInt(kontaktId)) {
+            return kontakte[i];
+          }
+        }
+        return null;
+      },
+      
+      //Kontakt löschen
+      removeKontakt: function(kontakt) {
+      kontakte.splice(kontakte.indexOf(kontakt), 1);
+      },
+      
+      //Kontakt hinzufügen
+      saveKontakt: function(kontakt) {
+        kontakt.id = kontakte.length;        
+        kontakte.push(kontakt);
+      },
       
       //liefert die gesamte Kontoliste
       getAll: function (){

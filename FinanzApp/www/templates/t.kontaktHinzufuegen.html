@@ -1,0 +1,23 @@
+<ion-view view-title="Kontakt hinzufuegen">
+ <ion-content>
+
+     <form>
+       <label class="item item-input">
+        <input type="text" placeholder="Vorname" ng-model="kontakt.vn">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Nachname" ng-model="kontakt.nn">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Nummer" ng-model="kontakt.nummer">
+      </label>
+      
+      <button ng-click="saveKontakt(kontakt)" class="button button-full button-dark"> 
+          OK
+      </button>
+      
+    </form>
+
+  </ion-content>
+</ion-view>
+

@@ -88,6 +88,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'menuContent': {
         templateUrl: 'templates/t.kontakte.html',
+        controller: 'KontakteCtrl'
+      }
+    }
+  })
+  .state('app.kontaktDetail', {
+    url: '/kontakte/:kontaktId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.kontaktDetail.html',
+        controller: 'KontaktDetailCtrl'
+      }
+    }
+  })
+  .state('app.kontaktHinzufuegen', {
+    url: '/kontaktHinzufuegen',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.kontaktHinzufuegen.html',
+        controller: 'KontaktHinzufuegenCtrl'
       }
     }
   })

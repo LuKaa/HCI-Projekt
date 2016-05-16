@@ -19,6 +19,24 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('KontakteCtrl', function($scope,FinanzService) {
+  $scope.kontakte = FinanzService.getAllKontakte();
+  $scope.removeKontakt = function(kontakt) {
+    FinanzService.removeKontakt(kontakt);
+  };
+})
+
+.controller('KontaktDetailCtrl', function($scope, $stateParams, FinanzService) {
+   $scope.kontakt = FinanzService.getKontakt($stateParams.kontaktId);
+})
+
+.controller('KontaktHinzufuegenCtrl', function($scope, $location, FinanzService) {
+  $scope.saveKontakt = function(kontakt) {
+    FinanzService.saveKontakt(kontakt);
+    $location.path("/app/kontakte"); 
+  }
+})
+
 .controller('EigenschaftenCtrl', function($scope, $location, FinanzService) {
  /* $scope.checkPw = function(konto) {
     FinanzService.checkPw(konto);

@@ -1,5 +1,23 @@
 <ion-view view-title="Kontaktbuch">
   <ion-content>
-    <h1>Kontaktbuch</h1>
+    
+    <div class="row responsive-sm">
+     <a class="button button-icon icon ion-plus-circled" href="#/app/kontaktHinzufuegen" ></a>
+    </div>
+    <ion-list>
+         
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="kontakt in kontakte" type="item-text-wrap" href="#/app/kontakte/{{kontakt.id}}">  
+
+        <h2>{{kontakt.vn}} {{kontakt.nn}}</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        
+        <ion-option-button class="button-light" ng-click="removeKontakt(kontakt)">
+          <a class="button button-icon icon ion-trash-a"></a>
+        </ion-option-button>
+        
+      </ion-item>
+    
+    </ion-list>
+    
   </ion-content>
 </ion-view>
