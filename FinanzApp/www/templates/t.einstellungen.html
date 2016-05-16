@@ -1,22 +1,69 @@
+<html>
+  <head>
+    //<link rel="stylesheet"  type="text/css" href="../css/style.css"/>
+   </head>
+<body>
 <ion-view view-title="Einstellungen">
   <ion-content>
-    <h1>Einstellungen</h1>
-    
-    <p>Sicherheitswort einrichten:</p>
-    
-    <div class="list">
+   
+  <div class="list">
 
-  <label class="item item-input">
-    <input type="text" placeholder="Passwort" ng-model="konto.passwort">
+<h4>Benachrichtigung(en) jeden:</h4>
+  <ion-list>
+    <ion-checkbox ng-model="mo">Montag</ion-checkbox>
+    <ion-checkbox ng-model="di">Dienstag</ion-checkbox>
+    <ion-checkbox ng-model="mi">Mittwoch</ion-checkbox>
+    <ion-checkbox ng-model="do">Donnerstag</ion-checkbox>
+    <ion-checkbox ng-model="fr">Freitag</ion-checkbox>
+    <ion-checkbox ng-model="sa">Samstag</ion-checkbox>
+    <ion-checkbox ng-model="so">Sonntag</ion-checkbox>
+  </ion-list>
+
+    <label class="item item-input item-select">
+    <div class="input-label">
+      Uhrzeit
+    </div>
+    <select>
+      <option>01:00</option>
+      <option>02:00</option>
+      <option>03:00</option>
+      <option>04:00</option>
+      <option>05:00</option>
+      <option>06:00</option>
+      <option>08:00</option>
+      <option>09:00</option>
+      <option>10:00</option>
+      <option>11:00</option>
+      <option selected>12:00</option>
+      <option>13:00</option>
+      <option>14:00</option>
+      <option>15:00</option>
+      <option>16:00</option>
+      <option>17:00</option>
+      <option>18:00</option>
+      <option>19:00</option>
+      <option>20:00</option>
+      <option>21:00</option>
+      <option>22:00</option>
+      <option>23:00</option>
+      <option>00:00</option>
+    </select>
   </label>
-  <label class="item item-input">
-    <input type="text" placeholder="Passwort bestätigen" ng-model="konto.passwort2">
-  </label>
-  <button  class="button button-full button-dark"> 
-          OK
-      </button> 
-</div>
+
+    <h4>  Sicherheitswort einrichten:</h4>
+    <label class="item item-input">
+      <input type="text" placeholder="Passwort" ng-model="konto.passwort">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="Passwort bestätigen" ng-model="konto.passwort2">
+    </label>
+    <button  class="button button-full button-dark"> 
+       OK
+    </button> 
+  </div>
   </ion-content>
 </ion-view>
 
 
+</body>
+</html>
