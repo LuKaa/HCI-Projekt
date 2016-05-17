@@ -2,8 +2,8 @@
   <ion-content>
     <h1>Statistik</h1>
  <!-- google chart api -->
-      <div>
-        <img ng-src="http://chart.apis.google.com/chart?chs=500x200&amp;cht=p3&amp;chd=t:33,22.23,11.27,9.94,9.1,14.46&amp;chl=Deutschland|...|D%C3%A4nemark|Restliche+Länder&amp;chtt=Marktanteile+im Europäischen+Schiffbau" style="width: 100px; height: 100px">
+      <div ng-if="konto.id=='0'" ng-controller="StatisticDetailCtrl"><!--     -->
+          <img ng-src="http://chart.apis.google.com/chart?chs=500x200&amp;cht=p3&amp;chd=t:10.9,22.23,11.27,9.94,9.1,14.46&amp;chl=Mobilität|Haushalt|Kleidung|Lebensmittel|Freizeit|Sonstige&amp;chtt=Anteile nach Kategorien" style="width: 300px; height: 200px">
       </div>
     
   </ion-content>
