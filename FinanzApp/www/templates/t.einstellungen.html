@@ -9,15 +9,15 @@
   <div class="list">
 
 <h4>Benachrichtigung(en) jeden:</h4>
-  <ion-list>
-    <ion-checkbox ng-model="mo">Montag</ion-checkbox>
-    <ion-checkbox ng-model="di">Dienstag</ion-checkbox>
-    <ion-checkbox ng-model="mi">Mittwoch</ion-checkbox>
-    <ion-checkbox ng-model="do">Donnerstag</ion-checkbox>
-    <ion-checkbox ng-model="fr">Freitag</ion-checkbox>
-    <ion-checkbox ng-model="sa">Samstag</ion-checkbox>
-    <ion-checkbox ng-model="so">Sonntag</ion-checkbox>
-  </ion-list>
+  <div class="list">
+        
+        <ion-checkbox ng-repeat="item in devList"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked">
+          {{ item.text }}
+        </ion-checkbox>
+
+  </div>
 
     <label class="item item-input item-select">
     <div class="input-label">

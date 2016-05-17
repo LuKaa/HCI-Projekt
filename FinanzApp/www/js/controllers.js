@@ -38,6 +38,19 @@ angular.module('starter.controllers', [])
 })
 
 .controller('EigenschaftenCtrl', function($scope, $location, FinanzService) {
+   $scope.user = FinanzService.getUser();
+   
+   //hier muss ich die bereits gespeicherten Einstellungen einfügen
+    $scope.devList = [
+    { text: "Montag", checked: true },
+    { text: "Dienstag", checked: false },
+    { text: "Mittwoch", checked: false },
+    { text: "Donnerstag", checked: false },
+    { text: "Freitag", checked: false },
+    { text: "Samstag", checked: false },
+    { text: "Sonntag", checked: false }
+  ];
+  
  /* $scope.checkPw = function(konto) {
     FinanzService.checkPw(konto);
   }

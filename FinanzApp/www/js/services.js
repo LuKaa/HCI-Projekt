@@ -3,6 +3,24 @@ angular.module('starter.services', [])
   
   var treffer; //ist variable wenn eine übereinstimmung beim suchen gefunden wurde
   
+  var user = 
+    {
+      passwort:'',
+      benachrichtigungen: [
+        {
+          montag: true,
+          dienstag: false,
+          mittwoch: false,
+          donnerstag:false,
+          freitag:false,
+          samstag:false,
+          sonntag:false,
+          uhrzeit: '12:00'
+        }
+      ]
+    }
+  ;
+  
   var kontakte = [
     {
       id:0,
@@ -127,7 +145,6 @@ angular.module('starter.services', [])
       
       //Passwort speichern
       savePw: function(konto) {
-        id = kontenliste.indexOf(konto);
         //...
       },
     
@@ -139,6 +156,23 @@ angular.module('starter.services', [])
           }
         }
         return null;
+      },
+      
+      getUser: function()
+      {
+        return user;
+      },
+      
+      saveBenachrichtigungen: function(newBenachrichtigungen)
+      {
+        /*user.benachrichtigungen.montag = newBenachrichtigungen.montag;
+        user.benachrichtigungen.dienstag = newBenachrichtigungen.dienstag;
+        user.benachrichtigungen.mittwoch = newBenachrichtigungen.mittwoch;
+        user.benachrichtigungen.donnerstag = newBenachrichtigungen.donnerstag;
+        user.benachrichtigungen.freitag = newBenachrichtigungen.freitag;
+        user.benachrichtigungen.samstag = newBenachrichtigungen.samstag;
+        user.benachrichtigungen.sonntag = newBenachrichtigungen.sonntag;
+        user.benachrichtigungen.uhrzeit = newBenachrichtigungen.uhrzeit;*/
       },
       
       //Meine Funktionen Markus
