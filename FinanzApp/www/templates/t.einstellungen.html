@@ -6,9 +6,7 @@
 <ion-view view-title="Einstellungen">
   <ion-content>
    
-  <div class="list">
-
-<h4>Benachrichtigung(en) jeden:</h4>
+  <h4>Benachrichtigung(en) jeden:</h4>
   <div class="list">
         
         <ion-checkbox ng-repeat="item in devList"
@@ -18,12 +16,12 @@
         </ion-checkbox>
 
   </div>
-
+  <form>
     <label class="item item-input item-select">
     <div class="input-label">
       Uhrzeit
     </div>
-    <select>
+    <select ng-checked="time" ng-model="time">
       <option>01:00</option>
       <option>02:00</option>
       <option>03:00</option>
@@ -34,7 +32,7 @@
       <option>09:00</option>
       <option>10:00</option>
       <option>11:00</option>
-      <option selected>12:00</option>
+      <option>12:00</option>
       <option>13:00</option>
       <option>14:00</option>
       <option>15:00</option>
@@ -49,7 +47,11 @@
       <option>00:00</option>
     </select>
   </label>
-
+  <button ng-click="saveUhrzeit(time)" class="button button-full button-dark"> 
+       OK
+    </button> 
+  </form>
+   <form>
     <h4>  Sicherheitswort einrichten:</h4>
     <label class="item item-input">
       <input type="text" placeholder="Passwort" ng-model="konto.passwort">
@@ -57,10 +59,10 @@
     <label class="item item-input">
       <input type="text" placeholder="Passwort bestätigen" ng-model="konto.passwort2">
     </label>
-    <button  class="button button-full button-dark"> 
+    <button ng-click="checkPasswort(konto)" class="button button-full button-dark"> 
        OK
     </button> 
-  </div>
+   </form>
   </ion-content>
 </ion-view>
 

@@ -8,14 +8,14 @@ angular.module('starter.services', [])
       passwort:'',
       benachrichtigungen: 
         {
-          montag: true,
+          montag: false,
           dienstag: false,
           mittwoch: false,
-          donnerstag:true,
+          donnerstag:false,
           freitag:false,
           samstag:false,
           sonntag:false,
-          uhrzeit: '12:00'
+          uhrzeit: '15:00'
         }
       
     }
@@ -119,6 +119,16 @@ angular.module('starter.services', [])
         return kontenliste;
       },
       
+      //liefert ein bestimmtes Konto
+      get: function(kontoId) {
+        for (var i = 0; i < kontenliste.length; i++) {
+          if (kontenliste[i].id === parseInt(kontoId)) {
+            return kontenliste[i];
+          }
+        }
+        return null;
+      },
+      
       //Konto löschen
       remove: function(konto) {
       kontenliste.splice(kontenliste.indexOf(konto), 1);
@@ -145,18 +155,10 @@ angular.module('starter.services', [])
       
       //Passwort speichern
       savePw: function(konto) {
-        //...
+        user.passwort = konto.passwort;
       },
-    
-      //liefert ein bestimmtes Konto
-      get: function(kontoId) {
-        for (var i = 0; i < kontenliste.length; i++) {
-          if (kontenliste[i].id === parseInt(kontoId)) {
-            return kontenliste[i];
-          }
-        }
-        return null;
-      },
+      
+      //Einstellungen
       
       getMontag: function()
       {
@@ -190,16 +192,20 @@ angular.module('starter.services', [])
       {
         return user.benachrichtigungen.uhrzeit;
       },
+      
       saveBenachrichtigungen: function(newBenachrichtigungen)
       {
-        user.benachrichtigungen.montag = newBenachrichtigungen.montag;
-        user.benachrichtigungen.dienstag = newBenachrichtigungen.dienstag;
-        user.benachrichtigungen.mittwoch = newBenachrichtigungen.mittwoch;
-        user.benachrichtigungen.donnerstag = newBenachrichtigungen.donnerstag;
-        user.benachrichtigungen.freitag = newBenachrichtigungen.freitag;
-        user.benachrichtigungen.samstag = newBenachrichtigungen.samstag;
-        user.benachrichtigungen.sonntag = newBenachrichtigungen.sonntag;
-        user.benachrichtigungen.uhrzeit = newBenachrichtigungen.uhrzeit;
+        user.benachrichtigungen.montag = newBenachrichtigungen.Montag;
+        user.benachrichtigungen.dienstag = newBenachrichtigungen.Dienstag;
+        user.benachrichtigungen.mittwoch = newBenachrichtigungen.Mittwoch;
+        user.benachrichtigungen.donnerstag = newBenachrichtigungen.Donnerstag;
+        user.benachrichtigungen.freitag = newBenachrichtigungen.Freitag;
+        user.benachrichtigungen.samstag = newBenachrichtigungen.Samstag;
+        user.benachrichtigungen.sonntag = newBenachrichtigungen.Sonntag;
+      },
+      saveUhrzeit: function(newUhrzeit)
+      {
+        user.benachrichtigungen.uhrzeit = newUhrzeit;
       },
       
       //Meine Funktionen Markus
