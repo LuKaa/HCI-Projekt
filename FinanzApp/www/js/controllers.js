@@ -37,19 +37,22 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('EigenschaftenCtrl', function($scope, $location, FinanzService) {
-   $scope.user = FinanzService.getUser();
-   
-   //hier muss ich die bereits gespeicherten Einstellungen einfügen
+.controller('EigenschaftenCtrl', function($scope, FinanzService) {
+  
+   //bereits gespeicherte Werte werden übergeben (true oder false)
     $scope.devList = [
-    { text: "Montag", checked: true },
-    { text: "Dienstag", checked: false },
-    { text: "Mittwoch", checked: false },
-    { text: "Donnerstag", checked: false },
-    { text: "Freitag", checked: false },
-    { text: "Samstag", checked: false },
-    { text: "Sonntag", checked: false }
+    { text: "Montag", checked: FinanzService.getMontag() },
+    { text: "Dienstag", checked: FinanzService.getDienstag() },
+    { text: "Mittwoch", checked: FinanzService.getMittwoch() },
+    { text: "Donnerstag", checked: FinanzService.getDonnerstag() },
+    { text: "Freitag", checked: FinanzService.getFreitag() },
+    { text: "Samstag", checked: FinanzService.getSamstag() },
+    { text: "Sonntag", checked: FinanzService.getSonntag() }
   ];
+  
+  $scope.saveBenachrichtigungen = function(item) {
+    FinanzService.saveBenachrichtigungen(item);
+  }
   
  /* $scope.checkPw = function(konto) {
     FinanzService.checkPw(konto);

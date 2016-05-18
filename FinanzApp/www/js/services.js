@@ -6,18 +6,18 @@ angular.module('starter.services', [])
   var user = 
     {
       passwort:'',
-      benachrichtigungen: [
+      benachrichtigungen: 
         {
           montag: true,
           dienstag: false,
           mittwoch: false,
-          donnerstag:false,
+          donnerstag:true,
           freitag:false,
           samstag:false,
           sonntag:false,
           uhrzeit: '12:00'
         }
-      ]
+      
     }
   ;
   
@@ -158,21 +158,48 @@ angular.module('starter.services', [])
         return null;
       },
       
-      getUser: function()
+      getMontag: function()
       {
-        return user;
+        return user.benachrichtigungen.montag;
       },
-      
+      getDienstag: function()
+      {
+        return user.benachrichtigungen.dienstag;
+      },
+      getMittwoch: function()
+      {
+        return user.benachrichtigungen.mittwoch;
+      },
+      getDonnerstag: function()
+      {
+        return user.benachrichtigungen.donnerstag;
+      },
+      getFreitag: function()
+      {
+        return user.benachrichtigungen.freitag;
+      },
+      getSamstag: function()
+      {
+        return user.benachrichtigungen.samstag;
+      },
+      getSonntag: function()
+      {
+        return user.benachrichtigungen.sonntag;
+      },
+      getUhrzeit: function()
+      {
+        return user.benachrichtigungen.uhrzeit;
+      },
       saveBenachrichtigungen: function(newBenachrichtigungen)
       {
-        /*user.benachrichtigungen.montag = newBenachrichtigungen.montag;
+        user.benachrichtigungen.montag = newBenachrichtigungen.montag;
         user.benachrichtigungen.dienstag = newBenachrichtigungen.dienstag;
         user.benachrichtigungen.mittwoch = newBenachrichtigungen.mittwoch;
         user.benachrichtigungen.donnerstag = newBenachrichtigungen.donnerstag;
         user.benachrichtigungen.freitag = newBenachrichtigungen.freitag;
         user.benachrichtigungen.samstag = newBenachrichtigungen.samstag;
         user.benachrichtigungen.sonntag = newBenachrichtigungen.sonntag;
-        user.benachrichtigungen.uhrzeit = newBenachrichtigungen.uhrzeit;*/
+        user.benachrichtigungen.uhrzeit = newBenachrichtigungen.uhrzeit;
       },
       
       //Meine Funktionen Markus
