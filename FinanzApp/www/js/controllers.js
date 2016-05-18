@@ -69,6 +69,10 @@ angular.module('starter.controllers', [])
     if(FinanzService.checkPw(konto)==1)
     {
       FinanzService.savePw(konto);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Passwort wurde geändert',
+        template: 'Passwort wurde erfolgreich geändert'
+      });
       $location.path("/app/einstellungen"); 
     }
     else if(FinanzService.checkPw(konto)==2)
