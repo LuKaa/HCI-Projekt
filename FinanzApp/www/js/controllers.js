@@ -50,22 +50,28 @@ angular.module('starter.controllers', [])
     { text: "Sonntag", checked: FinanzService.getSonntag() }
   ];
   
-  $scope.saveBenachrichtigungen = function(item) {
-    FinanzService.saveBenachrichtigungen(item);
+  
+  $scope.time = FinanzService.getUhrzeit();
+  
+  $scope.saveUhrzeit = function(time) {
+    FinanzService.saveUhrzeit(time);
   }
   
- /* $scope.checkPw = function(konto) {
+ $scope.checkPw = function(konto) {
     FinanzService.checkPw(konto);
+    
+    if(checkPw==1)
+    {
+      $scope.checkPw=1;
+      FinanzService.savePw(konto);
+    }
+    else
+    {
+      $scope.checkPw=0;
+    }
   }
-  if(checkPw==1)
-  {
-    $scope.checkPw=1;
-    FinanzService.savePw(konto);
-  }
-  else
-  {
-    $scope.checkPw=0;
-  }*/
+  
+  
 })
 
 .controller('UmsatzController', function($scope, $stateParams,FinanzService) {
