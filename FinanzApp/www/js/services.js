@@ -40,6 +40,7 @@ angular.module('starter.services', [])
   var kontenliste= [{ 
         id:0, 
         bezeichnung: 'Cash', 
+        face: 'img/cash.jpg',
         IBAN: "" ,
         BIC:"", 
         kontoNr:"", 
@@ -52,6 +53,7 @@ angular.module('starter.services', [])
       },{ 
         id:1,
         bezeichnung: 'Bankkonto', 
+        face: 'img/bank.jpg',
         IBAN: "AT611904300234573278" ,
         BIC:"DABAIE2D", 
         kontoNr:"65135", 
@@ -335,60 +337,60 @@ angular.module('starter.services', [])
       
       //nach Kategorie sortierte Summe der Umsätze
       umsatzNachKatM: function(umsatzList) {     
-        sum=0;
+        sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
           if(umsatzList[i].kategorie.valueOf()==new String("Mobilitaet").valueOf()){
-            sum = sum + umsatzList.betrag;
+            sum = sum + umsatzList[i].betrag;
           }
         }
         return sum;
       },   
       
       umsatzNachKatH: function(umsatzList) {     
-        sum=0;
+        sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
           if(umsatzList[i].kategorie.valueOf()==new String("Haushalt").valueOf()){
-            sum = sum + umsatzList.betrag;
+            sum = sum + umsatzList[i].betrag;
           }
         }
         return sum;
       },   
       
       umsatzNachKatK: function(umsatzList) {     
-        sum=0;
+        sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
           if(umsatzList[i].kategorie.valueOf()==new String("Kleidung").valueOf()){
-            sum = sum + umsatzList.betrag;
+            sum = sum + umsatzList[i].betrag;
           }
         }
         return sum;
       },   
       
       umsatzNachKatL: function(umsatzList) {     
-        sum=0;
+        sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
           if(umsatzList[i].kategorie.valueOf()==new String("Lebensmittel").valueOf()){
-            sum = sum + umsatzList.betrag;
+            sum = sum + umsatzList[i].betrag;
           }
         }
         return sum;
       },   
       
       umsatzNachKatF: function(umsatzList) {     
-        sum=0;
+        sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
           if(umsatzList[i].kategorie.valueOf()==new String("Freizeit").valueOf()){
-            sum = sum + umsatzList.betrag;
+            sum = sum + umsatzList[i].betrag;
           }
         }
         return sum;
       },
       
       umsatzNachKatS: function(umsatzList) {     
-        sum=0;
+        sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
           if(umsatzList[i].kategorie.valueOf()==new String("Sonstiges").valueOf()){
-            sum = sum + umsatzList.betrag;
+            sum = sum + umsatzList[i].betrag;
           }
         }
         return sum;
