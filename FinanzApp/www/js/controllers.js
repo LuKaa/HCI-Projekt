@@ -131,13 +131,18 @@ angular.module('starter.controllers', [])
   
 })
 
+//speichert die Kontenliste in die scope Variable um diese Liste dann auszugeben
+.controller('StatisticController', function($scope,FinanzService) {
+  $scope.kontenliste = FinanzService.getAll();
+})
+
+//zählt die Umsätze pro Kategorie und speichert sie in die scope Variable
 .controller('StatisticDetailController', function($scope, $stateParams, FinanzService) {
     konto = FinanzService.get($stateParams.kontoId);
     if(konto==null){
       var result="keine Datensätze";
       $scope.result = result;
     }else{
-      $scope.konto=konto;
       umsatzlist = FinanzService.getUmsatzList($stateParams.kontoId);
       var sumM = FinanzService.umsatzNachKatM(umsatzlist);
       var sumH = FinanzService.umsatzNachKatH(umsatzlist);
@@ -145,14 +150,13 @@ angular.module('starter.controllers', [])
       var sumL = FinanzService.umsatzNachKatL(umsatzlist);
       var sumF = FinanzService.umsatzNachKatF(umsatzlist);
       var sumS = FinanzService.umsatzNachKatS(umsatzlist);
-      $scope.sumM = sumM;
-      $scope.sumH = sumH;
-      $scope.sumK = sumK;
-      $scope.sumL = sumL;
-      $scope.sumF = sumF;
-      $scope.sumS = sumS;
+      $scope.sumM = Math.round(sumM);
+      $scope.sumH = Math.round(sumH);
+      $scope.sumK = Math.round(sumK);
+      $scope.sumL = Math.round(sumL);
+      $scope.sumF = Math.round(sumF);
+      $scope.sumS = Math.round(sumS);
     }
-   
 })
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
