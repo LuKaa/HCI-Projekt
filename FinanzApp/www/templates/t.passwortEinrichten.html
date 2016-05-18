@@ -1,0 +1,26 @@
+<html>
+  <head>
+    //<link rel="stylesheet"  type="text/css" href="../css/style.css"/>
+   </head>
+<body>
+<ion-view view-title="Einstellungen">
+  <ion-content>
+
+   <form>
+    <h4>  Sicherheitswort einrichten:</h4>
+    <label class="item item-input">
+      <input type="text" placeholder="Passwort" ng-model="konto.passwort">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="Passwort bestätigen" ng-model="konto.passwort2">
+    </label>
+    <button ng-click="checkPasswort(konto)" class="button button-full button-dark"> 
+       OK
+    </button> 
+   </form>
+  </ion-content>
+</ion-view>
+
+
+</body>
+</html>

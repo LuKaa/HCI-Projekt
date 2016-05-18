@@ -5,64 +5,18 @@
 <body>
 <ion-view view-title="Einstellungen">
   <ion-content>
-   
-  <h4>Benachrichtigung(en) jeden:</h4>
-  <div class="list">
-        
-        <ion-checkbox ng-repeat="item in devList"
-                      ng-model="item.checked" 
-                      ng-checked="item.checked">
-          {{ item.text }}
-        </ion-checkbox>
-
-  </div>
-  <form>
-    <label class="item item-input item-select">
-    <div class="input-label">
-      Uhrzeit
-    </div>
-    <select ng-checked="time" ng-model="time">
-      <option>01:00</option>
-      <option>02:00</option>
-      <option>03:00</option>
-      <option>04:00</option>
-      <option>05:00</option>
-      <option>06:00</option>
-      <option>08:00</option>
-      <option>09:00</option>
-      <option>10:00</option>
-      <option>11:00</option>
-      <option>12:00</option>
-      <option>13:00</option>
-      <option>14:00</option>
-      <option>15:00</option>
-      <option>16:00</option>
-      <option>17:00</option>
-      <option>18:00</option>
-      <option>19:00</option>
-      <option>20:00</option>
-      <option>21:00</option>
-      <option>22:00</option>
-      <option>23:00</option>
-      <option>00:00</option>
-    </select>
-  </label>
-  <button ng-click="saveUhrzeit(time)" class="button button-full button-dark"> 
-       OK
-    </button> 
-  </form>
-   <form>
-    <h4>  Sicherheitswort einrichten:</h4>
-    <label class="item item-input">
-      <input type="text" placeholder="Passwort" ng-model="konto.passwort">
-    </label>
-    <label class="item item-input">
-      <input type="text" placeholder="Passwort bestätigen" ng-model="konto.passwort2">
-    </label>
-    <button ng-click="checkPasswort(konto)" class="button button-full button-dark"> 
-       OK
-    </button> 
-   </form>
+   <ion-list>
+    <ion-item class="item-remove-animate item-avatar item-icon-right" href="#/app/einstellungen/benachrichtigungen">
+      <img ng-src="../img/benachrichtigung.jpg" style="width: 100px; height: 100px">
+      Benachrichtigungen
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+    <ion-item class="item-remove-animate item-avatar item-icon-right" href="#/app/einstellungen/passwortEinrichten">
+      <img ng-src="../img/passwort.png" style="width: 100px; height: 100px">
+      Passwort einrichten
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+   </ion-list>
   </ion-content>
 </ion-view>
 

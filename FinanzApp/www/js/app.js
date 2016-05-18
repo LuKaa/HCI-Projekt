@@ -56,6 +56,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  .state('app.benachrichtigungen', {
+    url: '/einstellungen/benachrichtigungen',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.benachrichtigungen.html',
+        controller: 'EigenschaftenCtrl'
+      }
+    }
+  })
+  .state('app.passwortEinrichten', {
+    url: '/einstellungen/passwortEinrichten',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.passwortEinrichten.html',
+        controller: 'EigenschaftenCtrl'
+      }
+    }
+  })
   .state('app.kontenVerwalten', {
     url: '/kontenVerwalten',
     views: {
