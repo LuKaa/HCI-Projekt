@@ -148,16 +148,24 @@ angular.module('starter.services', [])
       
        //Passwort prüfen
       checkPw: function(konto) {
-        if(konto.passwort !=konto.passwort2)
+        if(konto.passwort==konto.passwort2 && user.passwort==konto.altesPw)
         {
-          return 0;
+          return 1;
         }
-        return 1;
+        else if(user.passwort!= konto.altesPw)
+        {
+          return 2;
+        }
+        return 0;
       },
       
       //Passwort speichern
       savePw: function(konto) {
         user.passwort = konto.passwort;
+      },
+      
+      getPw:function() {
+        return user.passwort;
       },
       
       //Einstellungen

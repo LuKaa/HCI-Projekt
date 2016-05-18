@@ -63,28 +63,30 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('PasswortCtrl', function($scope, $ionicPopup, FinanzService) {
-  $scope.checkPw = function(konto) {
-    FinanzService.checkPw(konto);
-    
-    if(checkPw==1)
+.controller('PasswortCtrl', function($scope, $location, $ionicPopup, FinanzService) {
+
+  $scope.checkPw = function(konto) {   
+    if(FinanzService.checkPw(konto)==1)
     {
-      $scope.checkPw=1;
       FinanzService.savePw(konto);
+      $location.path("/app/einstellungen"); 
+    }
+    else if(FinanzService.checkPw(konto)==2)
+    {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Altes Passwort falsch',
+        template: 'Altes Passwort ist falsch. Bitte geben sie es erneut ein.'
+      });
     }
     else
     {
-      $scope.checkPw=0;
-      
       var alertPopup = $ionicPopup.alert({
         title: 'Passwort falsch',
         template: 'Passwörter stimmen nicht überein. Bitte geben sie es erneut ein.'
       });
-
-      alertPopup.then(function(res) {
-        console.log('Thank you for not eating my delicious ice cream cone');
-      });
     }
+    
+    $scope.pw = FinanzService.getPw();
   }
 })
 

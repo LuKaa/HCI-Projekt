@@ -14,10 +14,14 @@
     <label class="item item-input">
       <input type="text" placeholder="Passwort bestätigen" ng-model="konto.passwort2">
     </label>
-    <button ng-click="checkPasswort(konto)" class="button button-full button-dark"> 
+    <label class="item item-input">
+      <input type="text" placeholder="altes Passwort" ng-model="konto.altesPw">
+    </label>
+    <button ng-click="checkPw(konto)" class="button button-full button-dark"> 
        OK
     </button> 
    </form>
+   Hinweis: Falls Sie bis jetzt noch kein Passwort eingerichtet haben, bei "altes Passwort"" ein Leerzeichen eintragen.
   </ion-content>
 </ion-view>
 
