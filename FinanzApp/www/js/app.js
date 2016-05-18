@@ -52,7 +52,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'menuContent': {
         templateUrl: 'templates/t.einstellungen.html',
-        controller: 'EigenschaftenCtrl'
       }
     }
   })
@@ -61,7 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'menuContent': {
         templateUrl: 'templates/t.benachrichtigungen.html',
-        controller: 'EigenschaftenCtrl'
+        controller: 'BenachrichtigungenCtrl'
       }
     }
   })
@@ -70,7 +69,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'menuContent': {
         templateUrl: 'templates/t.passwortEinrichten.html',
-        controller: 'EigenschaftenCtrl'
+        controller: 'PasswortCtrl'
       }
     }
   })

@@ -15,7 +15,7 @@ angular.module('starter.services', [])
           freitag:false,
           samstag:false,
           sonntag:false,
-          uhrzeit: '15:00'
+          uhrzeit: '12:00'
         }
       
     }
@@ -197,13 +197,13 @@ angular.module('starter.services', [])
       
       saveBenachrichtigungen: function(newBenachrichtigungen)
       {
-        user.benachrichtigungen.montag = newBenachrichtigungen.Montag;
-        user.benachrichtigungen.dienstag = newBenachrichtigungen.Dienstag;
-        user.benachrichtigungen.mittwoch = newBenachrichtigungen.Mittwoch;
-        user.benachrichtigungen.donnerstag = newBenachrichtigungen.Donnerstag;
-        user.benachrichtigungen.freitag = newBenachrichtigungen.Freitag;
-        user.benachrichtigungen.samstag = newBenachrichtigungen.Samstag;
-        user.benachrichtigungen.sonntag = newBenachrichtigungen.Sonntag;
+        user.benachrichtigungen.montag = newBenachrichtigungen.mo;
+        user.benachrichtigungen.dienstag = newBenachrichtigungen.di;
+        user.benachrichtigungen.mittwoch = newBenachrichtigungen.mi;
+        user.benachrichtigungen.donnerstag = newBenachrichtigungen.do;
+        user.benachrichtigungen.freitag = newBenachrichtigungen.fr;
+        user.benachrichtigungen.samstag = newBenachrichtigungen.sa;
+        user.benachrichtigungen.sonntag = newBenachrichtigungen.so;
       },
       saveUhrzeit: function(newUhrzeit)
       {

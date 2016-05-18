@@ -37,27 +37,34 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('EigenschaftenCtrl', function($scope, FinanzService) {
+.controller('BenachrichtigungenCtrl', function($scope, $location, FinanzService) {
   
-   //bereits gespeicherte Werte werden übergeben (true oder false)
-    $scope.devList = [
-    { text: "Montag", checked: FinanzService.getMontag() },
-    { text: "Dienstag", checked: FinanzService.getDienstag() },
-    { text: "Mittwoch", checked: FinanzService.getMittwoch() },
-    { text: "Donnerstag", checked: FinanzService.getDonnerstag() },
-    { text: "Freitag", checked: FinanzService.getFreitag() },
-    { text: "Samstag", checked: FinanzService.getSamstag() },
-    { text: "Sonntag", checked: FinanzService.getSonntag() }
-  ];
+  //bereits gespeicherte Wochentage werden übergeben (true oder false)
+  $scope.montag = FinanzService.getMontag();
+  $scope.dienstag = FinanzService.getDienstag();
+  $scope.mittwoch = FinanzService.getMittwoch();
+  $scope.donnerstag = FinanzService.getDonnerstag();
+  $scope.freitag = FinanzService.getFreitag();
+  $scope.samstag = FinanzService.getSamstag();
+  $scope.sonntag = FinanzService.getSonntag();
   
-  
+  //gespeicherte Uhrzeit wird ausgelesen
   $scope.time = FinanzService.getUhrzeit();
   
+  //Uhrzeit wird gespeichert
   $scope.saveUhrzeit = function(time) {
     FinanzService.saveUhrzeit(time);
   }
   
- $scope.checkPw = function(konto) {
+  //Wochentage werden gespeichert
+  $scope.saveTage = function(item) {
+    FinanzService.saveBenachrichtigungen(item);
+     $location.path("/app/einstellungen"); 
+  }
+})
+
+.controller('PasswortCtrl', function($scope, $ionicPopup, FinanzService) {
+  $scope.checkPw = function(konto) {
     FinanzService.checkPw(konto);
     
     if(checkPw==1)
@@ -68,10 +75,17 @@ angular.module('starter.controllers', [])
     else
     {
       $scope.checkPw=0;
+      
+      var alertPopup = $ionicPopup.alert({
+        title: 'Passwort falsch',
+        template: 'Passwörter stimmen nicht überein. Bitte geben sie es erneut ein.'
+      });
+
+      alertPopup.then(function(res) {
+        console.log('Thank you for not eating my delicious ice cream cone');
+      });
     }
   }
-  
-  
 })
 
 .controller('UmsatzController', function($scope, $stateParams,FinanzService) {

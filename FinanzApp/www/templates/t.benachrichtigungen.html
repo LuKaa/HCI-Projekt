@@ -3,20 +3,47 @@
     //<link rel="stylesheet"  type="text/css" href="../css/style.css"/>
    </head>
 <body>
-<ion-view view-title="Einstellungen">
+<ion-view view-title="Benachrichtigungen">
   <ion-content>
-   
+   <form>
   <h4>Benachrichtigung(en) jeden:</h4>
   <div class="list">
         
-        <ion-checkbox ng-repeat="item in devList"
+       <!-- <ion-checkbox ng-repeat="item in devList"
                       ng-model="item.checked" 
                       ng-checked="item.checked">
           {{ item.text }}
         </ion-checkbox>
-
-  </div>
-  <form>
+        -->
+        <ion-checkbox ng-model="item.mo" 
+                      ng-checked="{{montag}}">
+          Montag
+        </ion-checkbox>
+        <ion-checkbox ng-model="item.di" 
+                      ng-checked="{{dienstag}}">
+          Dienstag
+        </ion-checkbox>
+        <ion-checkbox ng-model="item.mi" 
+                      ng-checked="{{mittwoch}}">
+          Mittwoch
+        </ion-checkbox>
+        <ion-checkbox ng-model="item.do" 
+                      ng-checked="{{donnerstag}}">
+          Donnerstag
+        </ion-checkbox>
+        <ion-checkbox ng-model="item.fr" 
+                      ng-checked="{{freitag}}">
+          Freitag
+        </ion-checkbox>
+        <ion-checkbox ng-model="item.sa" 
+                      ng-checked="{{samstag}}">
+          Samstag
+        </ion-checkbox>
+        <ion-checkbox ng-model="item.so" 
+                      ng-checked="{{sonntag}}">
+          Sonntag
+        </ion-checkbox>
+  
     <label class="item item-input item-select">
     <div class="input-label">
       Uhrzeit
@@ -47,9 +74,10 @@
       <option>00:00</option>
     </select>
   </label>
-  <button ng-click="saveUhrzeit(time)" class="button button-full button-dark"> 
+  <button ng-click="saveTage(item); saveUhrzeit(time)" class="button button-full button-dark"> 
        OK
     </button> 
+    </div>
   </form>
 
   </ion-content>
