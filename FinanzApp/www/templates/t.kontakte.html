@@ -1,9 +1,12 @@
 <ion-view view-title="Kontaktbuch">
   <ion-content>
     
+    <!-- +-Button zum  Hinzufügen eines Kontakts-->
     <div class="row responsive-sm">
      <a class="button button-icon icon ion-plus-circled" href="#/app/kontaktHinzufuegen" ></a>
     </div>
+    
+    <!-- Liste aller Kontakte -->
     <ion-list>
          
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="kontakt in kontakte" type="item-text-wrap" href="#/app/kontakte/{{kontakt.id}}">  

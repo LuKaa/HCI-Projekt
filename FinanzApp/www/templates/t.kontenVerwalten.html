@@ -1,16 +1,21 @@
 <ion-view view-title="KontenVerwalten">
  <ion-content>
 
+   <!-- +-Button zum Hinzufügen eines Kontos -->
    <div class="row responsive-sm">
      <a class="button button-icon icon ion-plus-circled" href="#/app/kontoHinzufuegen" ></a>
     </div>
-    <ion-list>
-         
+    <!-- Liste der bestehenden Konten -->
+    <ion-list>      
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="konto in kontenliste" type="item-text-wrap" href="#/app/konten/{{konto.id}}">  
+        <!-- Bild des Kontos -->
         <img ng-src="{{konto.face}}" style="width: 100px; height: 100px">
+        
+        <!-- Bezeichnung des Kontos -->
         <h2>{{konto.bezeichnung}}</h2>
         <i class="icon ion-chevron-right icon-accessory"></i>
         
+        <!-- Löschen eines Kontos -->
         <ion-option-button class="button-light" ng-click="remove(konto)">
           <a class="button button-icon icon ion-trash-a"></a>
         </ion-option-button>
