@@ -341,7 +341,7 @@ angular.module('starter.services', [])
        
       },
       
-      //nach Kategorie sortierte Summe der Umsätze
+      //nach Kategorie Mobilität sortierte Summe der Umsätze
       umsatzNachKatM: function(umsatzList) {     
         sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
@@ -352,6 +352,7 @@ angular.module('starter.services', [])
         return sum;
       },   
       
+      //nach Kategorie Haushalt sortierte Summe der Umsätze
       umsatzNachKatH: function(umsatzList) {     
         sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
@@ -362,6 +363,7 @@ angular.module('starter.services', [])
         return sum;
       },   
       
+      //nach Kategorie Kleidung sortierte Summe der Umsätze
       umsatzNachKatK: function(umsatzList) {     
         sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
@@ -372,6 +374,7 @@ angular.module('starter.services', [])
         return sum;
       },   
       
+      //nach Kategorie Lebensmittel sortierte Summe der Umsätze
       umsatzNachKatL: function(umsatzList) {     
         sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
@@ -382,6 +385,7 @@ angular.module('starter.services', [])
         return sum;
       },   
       
+      //nach Kategorie Freizeit sortierte Summe der Umsätze
       umsatzNachKatF: function(umsatzList) {     
         sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  
@@ -392,6 +396,7 @@ angular.module('starter.services', [])
         return sum;
       },
       
+      //nach Kategorie Sonstige sortierte Summe der Umsätze
       umsatzNachKatS: function(umsatzList) {     
         sum=0.0;
         for(var i = 0; i < umsatzList.length; ++i) {  

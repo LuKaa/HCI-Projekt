@@ -143,6 +143,7 @@ angular.module('starter.controllers', [])
 })
 
 //zählt die Umsätze pro Kategorie und speichert sie in die scope Variable
+//um bei Chart API keine Probleme zu bekommen, habe ich mich für das Runden der Umsätze entschieden
 .controller('StatisticDetailController', function($scope, $stateParams, FinanzService) {
     konto = FinanzService.get($stateParams.kontoId);
     if(konto==null){

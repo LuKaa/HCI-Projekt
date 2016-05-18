@@ -1,9 +1,12 @@
 <ion-view view-title="Statistik">
   <ion-content>
     <ion-list>
+        <!-- Generierung einer Kontenliste -->
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="konto in kontenliste" type="item-text-wrap" href="#/app/statistik/{{konto.id}}">
+          <!-- Liste besteht aus Links um auf die jeweils einzelnen Übersichten zu kommen -->
         <img ng-src="{{konto.face}}" style="width: 100px; height: 100px">
         <h2>{{konto.bezeichnung}}</h2>
+          <!-- Liste enthält jeweils ein passendes Bild und die Bezeichnung pro Konto -->
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>

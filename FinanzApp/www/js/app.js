@@ -110,6 +110,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  
+  //für die allgemeine Statistik Seite
   .state('app.statistik', {
     url: '/statistik',
     views: {
@@ -119,6 +121,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  
+  //für die detailierten Statistik Seiten
   .state('app.statistikDetail', {
     url: '/statistik/:kontoId',
     views: {
