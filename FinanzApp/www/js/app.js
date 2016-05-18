@@ -114,7 +114,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/statistik',
     views: {
       'menuContent': {
-        templateUrl: 'templates/t.statistik.html'
+        templateUrl: 'templates/t.statistik.html',
+        controller: 'StatisticController'
+      }
+    }
+  })
+  .state('app.statistikDetail', {
+    url: '/statistik/:kontoId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.statistikDetail.html',
       }
     }
   })
