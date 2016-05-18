@@ -1,0 +1,17 @@
+<ion-view view-title="Statistik">
+  <ion-content>
+      <div>
+        <div ng-controller="StatisticDetailController">
+            <h3><b>Umsätze pro Kategorie</b></h3>
+            <p>Mobilität: {{sumM}} €</p>
+            <p>Haushalt: {{sumH}} €</p>
+            <p>Kleidung: {{sumK}} €</p>
+            <p>Lebensmittel: {{sumL}} €</p>
+            <p>Freizeit: {{sumF}} €</p>
+            <p>Sonstige: {{sumS}} €</p>
+            <p>&nbsp;</p>
+            <img ng-src="http://chart.apis.google.com/chart?chs=500x200&amp;cht=p3&amp;chd=t:{{sumM}},{{sumH}},{{sumK}},{{sumL}},{{sumF}},{{sumS}}&amp;chl=Mobilität|Haushalt|Kleidung|Lebensmittel|Freizeit|Sonstige&amp;chtt=Anteile nach Kategorien" style="width: 300px; height: 200px">
+        </div>
+      </div>
+  </ion-content>
+</ion-view>
