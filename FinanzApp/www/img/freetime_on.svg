@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="85px" height="85px" viewBox="0 0 85 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M42.5,85 C65.9721019,85 85,65.9721019 85,42.5 C85,19.0278981 65.9721019,0 42.5,0 C19.0278981,0 0,19.0278981 0,42.5 C0,65.9721019 19.0278981,85 42.5,85 Z" id="Oval-2" fill="#4D94E7" sketch:type="MSShapeGroup"></path>
+        <g id="soccer-ball" sketch:type="MSLayerGroup" transform="translate(10.000000, 10.000000)">
+            <g id="Ball_1_" fill="#E6E6E6" sketch:type="MSShapeGroup">
+                <circle id="Oval" cx="32" cy="32" r="32"></circle>
+            </g>
+            <g id="Polygons" fill="#666666" sketch:type="MSShapeGroup">
+                <path d="M32,20 C30,20 20,28 20,30 C20,32 24,44 26,44 L38,44 C40,44 44,32 44,30 C44,28 34,20 32,20 L32,20 Z M4.292,48 C7.842,54.135 13.366,58.979 20,61.665 C19.996,59.244 19.906,51.905 18,50 C16.079,48.078 6.793,48.003 4.292,48 L4.292,48 Z M44,61.665 C50.633,58.978 56.158,54.135 59.708,48 C57.207,48.003 47.921,48.078 46,50 C44.095,51.905 44.005,59.244 44,61.665 L44,61.665 Z M10,24 C10,22.239 8.449,14.278 6.713,12.4 C2.509,17.816 0,24.613 0,32 C2,32 10,26 10,24 L10,24 Z M32,8 C33.352,8 39.081,3.795 41.204,1.35 C38.288,0.476 35.2,0 32,0 C28.8,0 25.712,0.476 22.796,1.35 C24.919,3.795 30.648,8 32,8 L32,8 Z M64,32 C64,24.613 61.491,17.816 57.287,12.4 C55.551,14.278 54,22.239 54,24 C54,26 62,32 64,32 L64,32 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

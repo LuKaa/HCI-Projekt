@@ -42,7 +42,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/bareingabe',
     views: {
       'menuContent': {
-        templateUrl: 'templates/t.bareingabe.html'
+        templateUrl: 'templates/t.bareingabe.html',
+        controller:'BareingabeCtrl'
       }
     }
   })
@@ -182,7 +183,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'UmsatzDetailController'
       }
     }
-  })  
+  }) 
+  
+    .state('app.umsatzTeilen', {
+    url: '/teilen/:betrag',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/t.umsatzTeilen.html',
+          controller:'KontakteCtrl'
+      }
+    }
+  })
 /*
   .state('app.search', {
     url: '/search',

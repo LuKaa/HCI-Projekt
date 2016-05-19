@@ -1,4 +1,8 @@
 angular.module('starter.services', [])
+
+
+
+
 .factory('FinanzService',function(){
   
   var treffer; //ist variable wenn eine übereinstimmung beim suchen gefunden wurde
@@ -33,6 +37,12 @@ angular.module('starter.services', [])
       nummer: '1699345498798',
       vn: 'Jane',
       nn: 'Doe'
+    },
+      {
+      id:2,
+      nummer: '06646449797',
+      vn: 'Lukas',
+      nn: 'Girsch'
     },
   ];
   
@@ -89,6 +99,20 @@ angular.module('starter.services', [])
     
     return{
       //Ab hier Funktionen
+        
+        // fügt einen Barumsatz hinzu
+    addUmsatz: function (Betrag,Kat,Beschreibung){
+       var lastPosID=kontenliste[0].umsatzList.length+1;
+        
+/*        kontenliste[0].umsatzList.push({posID:lastPosID+1, datum:"2014-02-01T23:28:56.782Z", kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});*/
+        
+        
+         kontenliste[0].umsatzList.push({posID:lastPosID, datum:"2014-02-01T23:28:56.782Z", kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});
+        
+        return null;
+      },
+        
+        
       
       //liefert die gesamte Kontaktliste
       getAllKontakte: function (){

@@ -1,0 +1,38 @@
+<ion-view view-title="umsatzTeilen">
+<ion-content ng-controller="KontakteCtrl">
+ <div class="row">   
+<button class="button button-block button-positive" on-tap=SMS(kontakte)>
+  SMS an gew&auml;hlte Kontakte senden
+</button>
+    </div>
+    
+    <ion-list>
+        
+<div ng:controller="KontakteCtrl">
+    <label ng-repeat="kontakt in kontakte ">
+        <ion-checkbox ng-model="kontakt[kontakte]">
+            <h2>{{kontakt.vn}} {{kontakt.nn}}</h2> 
+        </ion-checkbox>
+    </label>
+    <p>colors: {{kontakte}}</p>
+</div>
+        
+
+    </ion-list>
+    </ion-content>
+
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

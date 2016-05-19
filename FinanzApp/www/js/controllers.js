@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic','ngCordova'])
 
 .controller('KontenVerwaltenCtrl', function($scope,FinanzService) {
   $scope.kontenliste = FinanzService.getAll();
@@ -19,12 +19,49 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('KontakteCtrl', function($scope,FinanzService) {
+.controller('KontakteCtrl', function($stateParams,$scope,FinanzService,$ionicPopup) {
+   
   $scope.kontakte = FinanzService.getAllKontakte();
   $scope.removeKontakt = function(kontakt) {
     FinanzService.removeKontakt(kontakt);
   };
+    
+    $scope.SMS = function(kontakte){
+        var auswahlcounter=[];
+        for( i=0; i<kontakte.length;i++){
+            
+            var x=0;
+            for(var prop in kontakte[i]){
+            x++;
+            }
+            if(x>=6){
+                auswahlcounter.push(i);
+            }
+        }
+        console.log(auswahlcounter);
+        payment_each=$stateParams.betrag/(auswahlcounter.length+1);
+        for ( a=0;a<auswahlcounter.length;a++){
+        console.log(kontakte[auswahlcounter[a].toFixed]);
+            $scope.showPopup(kontakte[auswahlcounter[a]],payment_each)
+        }}
+
+    
+    $scope.showPopup = function(kontakt,payment) {
+    $scope.data = {}
+    
+      // Custom popup
+
+            var myPopup = $ionicPopup.show({
+            title: payment+' &euro;',
+            subTitle: kontakt.vn+' du schuldest mir den oben gennanten Betrag!!',
+            buttons: [
+                { text: '<b>DONE</b>',type: 'button-positive' }
+            ]
+            })
+}
+
 })
+
 
 .controller('KontaktDetailCtrl', function($scope, $stateParams, FinanzService) {
    $scope.kontakt = FinanzService.getKontakt($stateParams.kontaktId);
@@ -115,8 +152,6 @@ angular.module('starter.controllers', [])
 
 })
 
-
-
 .controller('UmsatzDetailController', function($scope, $stateParams,FinanzService) {
   //konto zur verfügung stellen
   konto = FinanzService.get($stateParams.kontoId);
@@ -197,6 +232,141 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('BareingabeCtrl', function($scope,FinanzService,$ionicPopup,$cordovaVibration,$ionicPlatform,$location) {
+    $scope.imgURLmobility = './img/mobility_on1.svg';
+    $scope.imgURLhousehold = './img/household_on1.svg';
+    $scope.imgURLclothing = './img/clothing_on1.svg';
+    $scope.imgURLfood = './img/food2_on1.svg';1
+    $scope.imgURLfreetime = './img/freetime_on1.svg';
+    $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
+    $scope.selected='';
+    
+    $scope.toggleImage = function(buttonid) { 
+     
+        $scope.imgURLmobility = './img/mobility_on1.svg';
+        $scope.imgURLhousehold = './img/household_on1.svg';
+        $scope.imgURLclothing = './img/clothing_on1.svg';
+        $scope.imgURLfood = './img/food2_on1.svg';
+        $scope.imgURLfreetime = './img/freetime_on1.svg';
+        $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
+
+      if(buttonid===$scope.selected){
+        $scope.imgURLmobility = './img/mobility_on1.svg';
+        $scope.imgURLhousehold = './img/household_on1.svg';
+        $scope.imgURLclothing = './img/clothing_on1.svg';
+        $scope.imgURLfood = './img/food2_on1.svg';
+        $scope.imgURLfreetime = './img/freetime_on1.svg';
+        $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
+        buttonid="";
+        $scope.selected='';
+      }
+      
+     switch(buttonid){
+        case 'Mobilitaet':
+            if ($scope.imgURLmobility === './img/mobility_on1.svg') {
+                $scope.selected="Mobilitaet";
+                $scope.imgURLmobility = './img/mobility_off.svg'
+                $scope.imgURLclothing = './img/clothing_on1.svg'
+
+            } else {
+                $scope.imgURLmobility = './img/mobility_on1.svg'
+                $scope.selected='';
+            }
+             break;
+        case 'Kleidung': 
+            if ($scope.imgURLclothing === './img/clothing_on1.svg') {
+                $scope.selected="Kleidung";
+                $scope.imgURLclothing = './img/clothing_off.svg'       
+            } else {
+                $scope.imgURLclothing = './img/clothing_on1.svg'
+                $scope.selected='';
+            }
+             break;
+        case'Haushalt':
+             if ($scope.imgURLhousehold === './img/household_on1.svg') {
+                 $scope.selected="Haushalt";
+                $scope.imgURLhousehold = './img/household_off.svg'       
+            } else {
+                $scope.imgURLhousehold = './img/household_on1.svg'
+                $scope.selected='';
+            }
+             break;
+        case'Lebensmittel':
+             if ($scope.imgURLfood === './img/food2_on1.svg') {
+                 $scope.selected="Lebensmittel";
+                $scope.imgURLfood = './img/food2_off.svg'       
+            } else {
+                $scope.imgURLfood = './img/food2_on1.svg' 
+                $scope.selected='';
+            }
+             break;
+        case'Freizeit':
+             if ($scope.imgURLfreetime === './img/freetime_on1.svg') {
+                 $scope.selected="Freizeit";
+                $scope.imgURLfreetime = './img/freetime_off.svg'       
+            } else {
+                $scope.imgURLfreetime = './img/freetime_on1.svg' 
+                $scope.selected='';
+            }
+             break;
+        case'Sonstiges':
+             if ($scope.imgURLsonstiges === './img/sonstiges_on1.svg') {
+                 $scope.selected="Sonstiges";
+                $scope.imgURLsonstiges = './img/sonstiges_off.svg'       
+            } else {
+                $scope.imgURLsonstiges = './img/sonstiges_on1.svg'
+                $scope.selected='';
+            }
+             break;  
+     }
+  };
+
+    $scope.addUmsatz=function(Typ,Betrag,Beschreibung){
+        
+        if( Typ ==='+'){
+            // $cordovaVibration.vibrate(500);
+            $scope.showPopup('+',Betrag);
+            FinanzService.addUmsatz(Betrag,$scope.selected,Beschreibung);
+
+        }else if(Typ ==='-'){
+            
+            Betrag=Betrag*-1;
+            // $cordovaVibration.vibrate(500);
+            $scope.showPopup('-',Betrag);
+            FinanzService.addUmsatz(Betrag,$scope.selected,Beschreibung);
+        }
+    }
+    
+     $scope.showPopup = function(Typ,Betrag) {
+      $scope.data = {}
+    
+      // Custom popup
+      if(Typ === '+'){
+      var myPopup = $ionicPopup.show({
+         title: Betrag+' &euro;',
+         subTitle: 'Erfolgreich verbucht',
+         buttons: [ { text: '<b>Okay!!</b>',type: 'button-positive', } ]
+       })
+      }else{
+            var myPopup = $ionicPopup.show({
+            title: Betrag+' &euro;',
+            subTitle: 'Erfolgreich abgebucht',
+            buttons: [
+                {text: '<b>Teilen</b>',type: 'button-energized',
+                 onTap: function(e) 
+                    {
+                    $location.path("/app/teilen/"+Betrag*-1); 
+                    }
+                },
+                { text: '<b>Okay!!</b>',type: 'button-positive' }
+            ]
+            })}
+}})
+
+
+    
+
+
 /*
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
@@ -212,4 +382,4 @@ angular.module('starter.controllers', [])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-*/;
+*/
