@@ -236,7 +236,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
     $scope.imgURLmobility = './img/mobility_on1.svg';
     $scope.imgURLhousehold = './img/household_on1.svg';
     $scope.imgURLclothing = './img/clothing_on1.svg';
-    $scope.imgURLfood = './img/food2_on1.svg';1
+    $scope.imgURLfood = './img/food_on1.svg';1
     $scope.imgURLfreetime = './img/freetime_on1.svg';
     $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
     $scope.selected='';
@@ -246,7 +246,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
         $scope.imgURLmobility = './img/mobility_on1.svg';
         $scope.imgURLhousehold = './img/household_on1.svg';
         $scope.imgURLclothing = './img/clothing_on1.svg';
-        $scope.imgURLfood = './img/food2_on1.svg';
+        $scope.imgURLfood = './img/food_on1.svg';
         $scope.imgURLfreetime = './img/freetime_on1.svg';
         $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
 
@@ -254,7 +254,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
         $scope.imgURLmobility = './img/mobility_on1.svg';
         $scope.imgURLhousehold = './img/household_on1.svg';
         $scope.imgURLclothing = './img/clothing_on1.svg';
-        $scope.imgURLfood = './img/food2_on1.svg';
+        $scope.imgURLfood = './img/food_on1.svg';
         $scope.imgURLfreetime = './img/freetime_on1.svg';
         $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
         buttonid="";
@@ -292,11 +292,11 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
             }
              break;
         case'Lebensmittel':
-             if ($scope.imgURLfood === './img/food2_on1.svg') {
+             if ($scope.imgURLfood === './img/food_on1.svg') {
                  $scope.selected="Lebensmittel";
-                $scope.imgURLfood = './img/food2_off.svg'       
+                $scope.imgURLfood = './img/food_off.svg'       
             } else {
-                $scope.imgURLfood = './img/food2_on1.svg' 
+                $scope.imgURLfood = './img/food_on1.svg' 
                 $scope.selected='';
             }
              break;
@@ -326,10 +326,10 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
         if( Typ ==='+'){
             // $cordovaVibration.vibrate(500);
             $scope.showPopup('+',Betrag);
+            console.log($scope.selected);
             FinanzService.addUmsatz(Betrag,$scope.selected,Beschreibung);
 
         }else if(Typ ==='-'){
-            
             Betrag=Betrag*-1;
             // $cordovaVibration.vibrate(500);
             $scope.showPopup('-',Betrag);

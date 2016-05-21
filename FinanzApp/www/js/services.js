@@ -102,13 +102,11 @@ angular.module('starter.services', [])
         
         // fügt einen Barumsatz hinzu
     addUmsatz: function (Betrag,Kat,Beschreibung){
-       var lastPosID=kontenliste[0].umsatzList.length+1;
+       var lastPosID=kontenliste[0].umsatzList.length;
         
-/*        kontenliste[0].umsatzList.push({posID:lastPosID+1, datum:"2014-02-01T23:28:56.782Z", kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});*/
-        
-        
-         kontenliste[0].umsatzList.push({posID:lastPosID, datum:"2014-02-01T23:28:56.782Z", kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});
-        
+        var date = new Date();
+        console.log("FinService "+Kat +"date "+date);
+        kontenliste[0].umsatzList.push({posID:lastPosID, datum:date.toISOString(), kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});
         return null;
       },
         
