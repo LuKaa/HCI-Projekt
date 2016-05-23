@@ -131,7 +131,8 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
   }
 })
 
-.controller('UmsatzController', function($scope, $stateParams,FinanzService) {
+.controller('UmsatzController', function($scope, $stateParams,FinanzService,$ionicHistory) {
+  $ionicHistory.removeBackView();
   $scope.kontenliste = FinanzService.getAll();
   konto = FinanzService.get($stateParams.kontoId);
   //wenn es das konto nicht gibt wird das gesamtkono bestimmt
@@ -152,7 +153,9 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
 
 })
 
-.controller('UmsatzDetailController', function($scope, $stateParams,FinanzService) {
+.controller('UmsatzDetailController', function($scope, $stateParams,FinanzService,$rootScope,$ionicHistory) {
+  $ionicHistory.removeBackView();
+  
   //konto zur verfügung stellen
   konto = FinanzService.get($stateParams.kontoId);
   //kategorie zum anzeigen
@@ -240,6 +243,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
     $scope.imgURLfreetime = './img/freetime_on1.svg';
     $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
     $scope.selected='';
+    
     
     $scope.toggleImage = function(buttonid) { 
      
