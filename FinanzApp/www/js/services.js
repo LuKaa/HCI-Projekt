@@ -50,7 +50,7 @@ angular.module('starter.services', [])
   var kontenliste= [{ 
         id:0, 
         bezeichnung: 'Cash', 
-        face: 'img/cash.jpg',
+        face: 'img/cash.png',
         IBAN: "" ,
         BIC:"", 
         kontoNr:"", 
