@@ -105,7 +105,6 @@ angular.module('starter.services', [])
        var lastPosID=kontenliste[0].umsatzList.length;
         
         var date = new Date();
-        console.log("FinService "+Kat +"date "+date);
         kontenliste[0].umsatzList.push({posID:lastPosID, datum:date.toISOString(), kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});
         return null;
       },
