@@ -1,6 +1,6 @@
 <ion-view view-title="Umsatz {{konto.bezeichnung}}">
   <ion-content>
-    <div class="row">
+    <div class="row no-padding">
         <div class="col">
             <div ng-if="konto.id=='0'"><a class="button button-full button-positive" href="#/app/umsatz/0" >Cash</a></div>
             <div ng-if="konto.id!='0'"><a class="button button-full button-stable" href="#/app/umsatz/0">Cash</a></div>
@@ -15,7 +15,7 @@
         </div>
     </div>
     
-    <div class="card">
+    <div class="card" type="no-list-inset">
         <div class="row">   
         <div class="col" style="color:#00FF00; text-align: center;">+ {{konto.bezuegebetragOTF}} €</div>
         <div class="col" style="color:#FF0000; text-align: center;">{{konto.abzuegebetragOTF}} €</div>
@@ -31,21 +31,19 @@
         <div class="row">
             <div class="col" align="center">
                 <a href="#/app/umsatz/{{konto.id}}/Mobilitaet" class="button button-icon">
-                    <img src="./img/mobility_off.svg" width="80px" >
-                
+                    <img src="./img/mobility_off.svg" width="90px" >
                 Mobilitaet
                 </a>    
             </div>
             <div class="col" align="center">
                 <a href="#/app/umsatz/{{konto.id}}/Haushalt" class="button button-icon">
-                    <img src="./img/household_off.svg" width="80px">
+                    <img src="./img/household_off.svg" width="90px">
                 Haushalt
                 </a>    
             </div>
             <div class="col" align="center">
                 <a href="#/app/umsatz/{{konto.id}}/Kleidung" class="button button-icon">
-                    <img src="./img/clothing_off.svg" width="80px">
-                
+                    <img src="./img/clothing_off.svg" width="90px">
                 Kleidung
                 </a>    
             </div>
@@ -53,22 +51,19 @@
         <div class="row">
             <div class="col" align="center">
                 <a href="#/app/umsatz/{{konto.id}}/Lebensmittel" class="button button-icon">
-                    <img src="./img/food_off.svg" width="80px">
-                
+                    <img src="./img/food_off.svg" width="90px">
                 Essen
                 </a>    
             </div>
             <div class="col" align="center">
                 <a href="#/app/umsatz/{{konto.id}}/Freizeit" class="button button-icon">
-                    <img src="./img/freetime_off.svg" width="80px">
-                
+                    <img src="./img/freetime_off.svg" width="90px">
                 Freizeit
                 </a>    
             </div>
             <div class="col" align="center">
                 <a href="#/app/umsatz/{{konto.id}}/Sonstiges" class="button button-icon">
-                    <img src="./img/sonstiges_off.svg" width="80px">
-                
+                    <img src="./img/sonstiges_off.svg" width="90px">
                 Sonstiges
                 </a>    
             </div>
@@ -76,7 +71,7 @@
         <div class="row">
             <div class="col" align="center">
                 <a href="#/app/umsatz/{{konto.id}}/Gesamt" class="button button-icon">
-                    <img src="./img/gesamt-icon.png" width="100%">
+                    <img src="./img/gesamt-icon.png" width="90%">
                 </a>
             </div>
         </div>

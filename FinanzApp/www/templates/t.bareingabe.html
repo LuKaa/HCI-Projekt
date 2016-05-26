@@ -28,56 +28,49 @@
             Kategorie ausw&auml;hlen:   {{selected}} 
            
         </div>
-    <div class="item item-text-wrap">
+        <div class="item item-text-wrap">
+            <div class="row">
+                <div class="col" align="center">
+                    <a on-tap="toggleImage('Mobilitaet')"> <img  id="mobility" ng-src="{{imgURLmobility}}" ng-show="imgURLmobility" width="90%" height="90px"> </a>
+                    Mobilitaet
+                </div>
+                <div class="col" align="center">
+                    <a on-tap="toggleImage('Haushalt')"> <img id="household" ng-src="{{imgURLhousehold}}" ng-show="imgURLhousehold" width="90%" height="90px"> </a>
+                    Haushalt
+                </div>
+                <div class="col" align="center">
+                    <a on-tap="toggleImage('Kleidung')"> <img  id="clothing" ng-src="{{imgURLclothing}}" ng-show="imgURLclothing" width="90%" height="90px"> </a>
+                    Kleidung
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col" align="center">
+                    <a on-tap="toggleImage('Lebensmittel')"> <img  id="food" ng-src="{{imgURLfood}}" ng-show="imgURLfood" width="90%" height="90px"> </a>
+                    Essen
+                </div>
+                <div class="col" align="center">
+                    <a on-tap="toggleImage('Freizeit')"> <img  id="freetime" ng-src="{{imgURLfreetime}}" ng-show="imgURLfreetime" width="90%" height="90px"> </a>
+                    Freizeit
+                </div>
+                <div class="col" align="center">
+                    <a on-tap="toggleImage('Sonstiges')"> <img  id="sonstiges" ng-src="{{imgURLsonstiges}}" ng-show="imgURLsonstiges" width="90%" height="90px"> </a>
+                    Sonstiges
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="card" type="list-inset">
         <div class="row">
-            
-        <div class="col" align="center">
-            <a on-tap="toggleImage('Mobilitaet')"> <img  id="mobility" ng-src="{{imgURLmobility}}" ng-show="imgURLmobility" width="90%" height="90px"> </a>
-            Mobilitaet
-            
-        </div>
-        <div class="col" align="center">
-            <a on-tap="toggleImage('Haushalt')"> <img id="household" ng-src="{{imgURLhousehold}}" ng-show="imgURLhousehold" width="90%" height="90px"> </a>
-            Haushalt
-        </div>
-        <div class="col" align="center">
-            <a on-tap="toggleImage('Kleidung')"> <img  id="clothing" ng-src="{{imgURLclothing}}" ng-show="imgURLclothing" width="90%" height="90px"> </a>
-            Kleidung
-        </div>
-    </div>
-        
-    <div class="row">
-        <div class="col" align="center">
-            <a on-tap="toggleImage('Lebensmittel')"> <img  id="food" ng-src="{{imgURLfood}}" ng-show="imgURLfood" width="90%" height="90px"> </a>
-            Essen
-        </div>
-        <div class="col" align="center">
-            <a on-tap="toggleImage('Freizeit')"> <img  id="freetime" ng-src="{{imgURLfreetime}}" ng-show="imgURLfreetime" width="90%" height="90px"> </a>
-            Freizeit
-        </div>
-        <div class="col" align="center">
-            <a on-tap="toggleImage('Sonstiges')"> <img  id="sonstiges" ng-src="{{imgURLsonstiges}}" ng-show="imgURLsonstiges" width="90%" height="90px"> </a>
-            Sonstiges
-        </div>
-    </div>
-        </div>
-        </div>
-        
-        <div class="card">
-        
-        <div class="row">
-        <div class="col" align="center">
-            
-        <a on-tap="addUmsatz('+',Betrag,'','')"> <img src="./img/add1.svg" width="90px"> </a>
+            <div class="col" align="center">
+                <a on-tap="addUmsatz('+',Betrag,'','')"> <img src="./img/add1.svg" width="90px"> </a>
+            </div>
 
+            <div class="col" align="center">   
+                 <a on-tap="addUmsatz('-',Betrag,'Sonstiges','')"> <img src="./img/remove.svg" width="90px"> </a>
+            </div>
         </div>
-
-        <div class="col" align="center">   
-             <a on-tap="addUmsatz('-',Betrag,'Sonstiges','')"> <img src="./img/remove.svg" width="90px"> </a>
-        </div>
-            
-    </div>
-        
     </div>
         
         
