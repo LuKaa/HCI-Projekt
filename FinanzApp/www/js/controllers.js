@@ -147,7 +147,13 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
   }
 })
 
-.controller('UmsatzController', function($scope, $stateParams,FinanzService) {
+.controller('UmsatzController', function($scope, $stateParams,FinanzService,$ionicHistory) {
+  
+  
+  if(typeof($ionicHistory.currentView())!= "undefined"){
+    $ionicHistory.removeBackView();
+  }
+  
   $scope.kontenliste = FinanzService.getAll();
   konto = FinanzService.get($stateParams.kontoId);
   //wenn es das konto nicht gibt wird das gesamtkono bestimmt
@@ -168,7 +174,9 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
 
 })
 
-.controller('UmsatzDetailController', function($scope, $stateParams,FinanzService) {
+.controller('UmsatzDetailController', function($scope, $stateParams,FinanzService,$rootScope,$ionicHistory) {
+  $ionicHistory.removeBackView();
+  
   //konto zur verfügung stellen
   konto = FinanzService.get($stateParams.kontoId);
   //kategorie zum anzeigen
@@ -186,7 +194,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
     cpUmsatzliste=FinanzService.cleanNachKat(cpUmsatzliste,$stateParams.kontoKat);//die nicht die passende Kat haben weg hauen
     cpUmsatzliste=FinanzService.machValidDateFormat(cpUmsatzliste);//zeige DatumFormat mit 2 Kommerstellen an.
     cpUmsatzliste=FinanzService.sortbyDate(cpUmsatzliste);//sort
-    cpUmsatzliste=FinanzService.makeMonthRev(cpUmsatzliste);
+    cpUmsatzliste=FinanzService.makeMonthRev(cpUmsatzliste);//monatssaldi
     cpUmsatzliste = FinanzService.convertDates2Read(cpUmsatzliste);//Lesbares Datumsformat
     $scope.umsatzlist = cpUmsatzliste;
     
@@ -237,8 +245,11 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
     }
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$ionicHistory) {
+  if(typeof($ionicHistory.currentView())!= "undefined"){
+    $ionicHistory.clearHistory();
+    $ionicHistory.clearCache();
+  }
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -249,20 +260,23 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
 })
 
 .controller('BareingabeCtrl', function($scope,FinanzService,$ionicPopup,$cordovaVibration,$ionicPlatform,$location) {
+    // Links zu Bildern in Kategorieansicht
+    
     $scope.imgURLmobility = './img/mobility_on1.svg';
     $scope.imgURLhousehold = './img/household_on1.svg';
     $scope.imgURLclothing = './img/clothing_on1.svg';
-    $scope.imgURLfood = './img/food2_on1.svg';1
+    $scope.imgURLfood = './img/food_on1.svg';1
     $scope.imgURLfreetime = './img/freetime_on1.svg';
     $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
     $scope.selected='';
     
+    // Funktion die sich um das Umschalten zwischen ausgewählten und nicht ausgewählten Bildern in der Kategorie auswahl auf dem Bildschirm "Bareingabe"
     $scope.toggleImage = function(buttonid) { 
      
         $scope.imgURLmobility = './img/mobility_on1.svg';
         $scope.imgURLhousehold = './img/household_on1.svg';
         $scope.imgURLclothing = './img/clothing_on1.svg';
-        $scope.imgURLfood = './img/food2_on1.svg';
+        $scope.imgURLfood = './img/food_on1.svg';
         $scope.imgURLfreetime = './img/freetime_on1.svg';
         $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
 
@@ -270,7 +284,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
         $scope.imgURLmobility = './img/mobility_on1.svg';
         $scope.imgURLhousehold = './img/household_on1.svg';
         $scope.imgURLclothing = './img/clothing_on1.svg';
-        $scope.imgURLfood = './img/food2_on1.svg';
+        $scope.imgURLfood = './img/food_on1.svg';
         $scope.imgURLfreetime = './img/freetime_on1.svg';
         $scope.imgURLsonstiges = './img/sonstiges_on1.svg';
         buttonid="";
@@ -308,11 +322,11 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
             }
              break;
         case'Lebensmittel':
-             if ($scope.imgURLfood === './img/food2_on1.svg') {
+             if ($scope.imgURLfood === './img/food_on1.svg') {
                  $scope.selected="Lebensmittel";
-                $scope.imgURLfood = './img/food2_off.svg'       
+                $scope.imgURLfood = './img/food_off.svg'       
             } else {
-                $scope.imgURLfood = './img/food2_on1.svg' 
+                $scope.imgURLfood = './img/food_on1.svg' 
                 $scope.selected='';
             }
              break;
@@ -336,66 +350,64 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
              break;  
      }
   };
-
+    
+    
+    // Funktion die je nach Buchungstyp einen positiven Betrag  oder einen negativen Betrag zur //Umsatzliste hinzufügt. Beschreibung wird aktuell nicht verwendet aber ebefalls gespeichert.
     $scope.addUmsatz=function(Typ,Betrag,Beschreibung){
-        
-        if( Typ ==='+'){
+        if(Betrag == 0 || Betrag == null){
+            // $cordovaVibration.vibrate(500);
+            $scope.showPopup('Empty',Betrag);
+            return null;
+        }
+        if( Typ ==='+' && Betrag>0){
             // $cordovaVibration.vibrate(500);
             $scope.showPopup('+',Betrag);
             FinanzService.addUmsatz(Betrag,$scope.selected,Beschreibung);
 
-        }else if(Typ ==='-'){
-            
-            Betrag=Betrag*-1;
+        }else if(Typ ==='-' && Betrag !=0){
+            if( Betrag > 0){
+                Betrag=Betrag*-1;
+            }
             // $cordovaVibration.vibrate(500);
             $scope.showPopup('-',Betrag);
             FinanzService.addUmsatz(Betrag,$scope.selected,Beschreibung);
         }
     }
     
-     $scope.showPopup = function(Typ,Betrag) {
-      $scope.data = {}
     
-      // Custom popup
-      if(Typ === '+'){
-      var myPopup = $ionicPopup.show({
-         title: Betrag+' &euro;',
-         subTitle: 'Erfolgreich verbucht',
-         buttons: [ { text: '<b>Okay!!</b>',type: 'button-positive', } ]
-       })
-      }else{
-            var myPopup = $ionicPopup.show({
-            title: Betrag+' &euro;',
-            subTitle: 'Erfolgreich abgebucht',
-            buttons: [
-                {text: '<b>Teilen</b>',type: 'button-energized',
-                 onTap: function(e) 
-                    {
-                    $location.path("/app/teilen/"+Betrag*-1); 
-                    }
-                },
-                { text: '<b>Okay!!</b>',type: 'button-positive' }
-            ]
-            })}
-}})
+    // Popup das über eine erfolgreiche Verbunchung des Eingegebeben Betrages informiert. Außerdem Weiterleitung zum "Umsatz teilen" screen.
+    $scope.showPopup = function(Typ,Betrag) {
+        $scope.data = {}
+        if(Typ == 'Empty'){
+             var myPopup = $ionicPopup.show({
+             title:' Fehler!!',
+             subTitle: 'Bitte geben SIe einen gültigen Betrag ein.',
+             buttons: [ { text: '<b>Okay!!</b>',type: 'button-positive', } ]
+           })
+             return null;
+        }
+      
+          if(Typ === '+'){
+          var myPopup = $ionicPopup.show({
+             title: Betrag+' &euro;',
+             subTitle: 'Erfolgreich verbucht',
+             buttons: [ { text: '<b>Okay!!</b>',type: 'button-positive', } ]
+           })
+          }else{
+                var myPopup = $ionicPopup.show({
+                title: Betrag+' &euro;',
+                subTitle: 'Erfolgreich abgebucht',
+                buttons: [
+                    {text: '<b>Teilen</b>',type: 'button-energized',
+                     onTap: function(e) 
+                        {
+                        $location.path("/app/teilen/"+Betrag*-1); 
+                        }
+                    },
+                    { text: '<b>Okay!!</b>',type: 'button-positive' }
+                ]
+                })}
+}
 
-
-    
-
-
-/*
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-})
-
-*/

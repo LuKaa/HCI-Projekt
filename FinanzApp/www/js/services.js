@@ -50,7 +50,7 @@ angular.module('starter.services', [])
   var kontenliste= [{ 
         id:0, 
         bezeichnung: 'Cash', 
-        face: 'img/cash.jpg',
+        face: 'img/cash.png',
         IBAN: "" ,
         BIC:"", 
         kontoNr:"", 
@@ -102,13 +102,10 @@ angular.module('starter.services', [])
         
         // fügt einen Barumsatz hinzu
     addUmsatz: function (Betrag,Kat,Beschreibung){
-       var lastPosID=kontenliste[0].umsatzList.length+1;
+       var lastPosID=kontenliste[0].umsatzList.length;
         
-/*        kontenliste[0].umsatzList.push({posID:lastPosID+1, datum:"2014-02-01T23:28:56.782Z", kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});*/
-        
-        
-         kontenliste[0].umsatzList.push({posID:lastPosID, datum:"2014-02-01T23:28:56.782Z", kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});
-        
+        var date = new Date();
+        kontenliste[0].umsatzList.push({posID:lastPosID, datum:date.toISOString(), kategorie:Kat,beschreibung:Beschreibung,betrag:Betrag});
         return null;
       },
         
@@ -268,6 +265,7 @@ angular.module('starter.services', [])
           }
         }
         
+        
         //console.log(kontoTemp.umsatzList[0].betrag);
         return kontoTemp;
       },
@@ -278,12 +276,17 @@ angular.module('starter.services', [])
         konto.gesamtbetragOTF=0;
         konto.abzuegebetragOTF=0;
         konto.bezuegebetragOTF=0;
+        var dateNow = new Date(); //heutiges datum zum wissen welches monat
+        dateNow.setDate(1); //auf Monatsersten gesetzt 
         for (var i = 0; i < konto.umsatzList.length; i++) {
-          konto.gesamtbetragOTF += konto.umsatzList[i].betrag;
-          if(konto.umsatzList[i].betrag>0){
-            konto.bezuegebetragOTF+=konto.umsatzList[i].betrag;
-          }else{
-            konto.abzuegebetragOTF+=konto.umsatzList[i].betrag;
+          dateTemp = new Date (konto.umsatzList[i].datum);
+          if(dateTemp.getTime()>dateNow.getTime()){ //Nur bezüge des Aktuellen Monat
+            konto.gesamtbetragOTF += konto.umsatzList[i].betrag;
+            if(konto.umsatzList[i].betrag>0){
+              konto.bezuegebetragOTF+=konto.umsatzList[i].betrag;
+            }else{
+              konto.abzuegebetragOTF+=konto.umsatzList[i].betrag;
+            }
           }
         }
         konto.gesamtbetragOTF =konto.gesamtbetragOTF.toFixed(2);
@@ -322,7 +325,7 @@ angular.module('starter.services', [])
         str="";
         if(date.toString().slice(0,9)=="!WildCat!")
         {
-          str = month[parseInt(date.slice(10,12))]+ " " + date.slice(12,17) 
+          str = month[parseInt(date.slice(10,12))-1]+ " " + date.slice(12,17) 
         }else{
           str+=date.toString().slice(8,10)+"."; //Tag 
           str+=date.toString().slice(5,7)+"."; //Monat
