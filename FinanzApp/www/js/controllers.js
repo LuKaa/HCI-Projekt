@@ -132,7 +132,12 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
 })
 
 .controller('UmsatzController', function($scope, $stateParams,FinanzService,$ionicHistory) {
-  $ionicHistory.removeBackView();
+  
+  
+  if(typeof($ionicHistory.currentView())!= "undefined"){
+    $ionicHistory.removeBackView();
+  }
+  
   $scope.kontenliste = FinanzService.getAll();
   konto = FinanzService.get($stateParams.kontoId);
   //wenn es das konto nicht gibt wird das gesamtkono bestimmt
@@ -173,7 +178,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
     cpUmsatzliste=FinanzService.cleanNachKat(cpUmsatzliste,$stateParams.kontoKat);//die nicht die passende Kat haben weg hauen
     cpUmsatzliste=FinanzService.machValidDateFormat(cpUmsatzliste);//zeige DatumFormat mit 2 Kommerstellen an.
     cpUmsatzliste=FinanzService.sortbyDate(cpUmsatzliste);//sort
-    cpUmsatzliste=FinanzService.makeMonthRev(cpUmsatzliste);
+    cpUmsatzliste=FinanzService.makeMonthRev(cpUmsatzliste);//monatssaldi
     cpUmsatzliste = FinanzService.convertDates2Read(cpUmsatzliste);//Lesbares Datumsformat
     $scope.umsatzlist = cpUmsatzliste;
     
@@ -224,8 +229,11 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
     }
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$ionicHistory) {
+  if(typeof($ionicHistory.currentView())!= "undefined"){
+    $ionicHistory.clearHistory();
+    $ionicHistory.clearCache();
+  }
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
