@@ -146,6 +146,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'menuContent': {
         templateUrl: 'templates/t.statistikDetail.html',
+        controller: 'StatisticDetailController'
       }
     }
   })

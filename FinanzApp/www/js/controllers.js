@@ -221,7 +221,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
   $scope.kontenliste = FinanzService.getAll();
 })
 
-//zählt die Umsätze pro Kategorie und speichert sie in die scope Variable
+//zählt die Umsätze, Einnahmen, Ausgaben pro Kategorie und speichert sie in die scope Variable
 //um bei Chart API keine Probleme zu bekommen, habe ich mich für das Runden der Umsätze entschieden
 .controller('StatisticDetailController', function($scope, $stateParams, FinanzService) {
     konto = FinanzService.get($stateParams.kontoId);
@@ -236,12 +236,41 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
       var sumL = FinanzService.umsatzNachKatL(umsatzlist);
       var sumF = FinanzService.umsatzNachKatF(umsatzlist);
       var sumS = FinanzService.umsatzNachKatS(umsatzlist);
+     
+      var plusM = FinanzService.einnahmeNachKatM(umsatzlist);
+      var plusH = FinanzService.einnahmeNachKatH(umsatzlist);
+      var plusK = FinanzService.einnahmeNachKatK(umsatzlist);
+      var plusL = FinanzService.einnahmeNachKatL(umsatzlist);
+      var plusF = FinanzService.einnahmeNachKatF(umsatzlist);
+      var plusS = FinanzService.einnahmeNachKatS(umsatzlist);
+     
+      var minusM = FinanzService.ausgabeNachKatM(umsatzlist);
+      var minusH = FinanzService.ausgabeNachKatH(umsatzlist);
+      var minusK = FinanzService.ausgabeNachKatK(umsatzlist);
+      var minusL = FinanzService.ausgabeNachKatL(umsatzlist);
+      var minusF = FinanzService.ausgabeNachKatF(umsatzlist);
+      var minusS = FinanzService.ausgabeNachKatS(umsatzlist);
+      
       $scope.sumM = Math.round(sumM);
       $scope.sumH = Math.round(sumH);
       $scope.sumK = Math.round(sumK);
       $scope.sumL = Math.round(sumL);
       $scope.sumF = Math.round(sumF);
       $scope.sumS = Math.round(sumS);
+     
+      $scope.plusM = Math.round(plusM);
+      $scope.plusH = Math.round(plusH);
+      $scope.plusK = Math.round(plusK);
+      $scope.plusL = Math.round(plusL);
+      $scope.plusF = Math.round(plusF);
+      $scope.plusS = Math.round(plusS);
+      
+      $scope.minusM = Math.round(Math.abs(minusM));
+      $scope.minusH = Math.round(Math.abs(minusH));
+      $scope.minusK = Math.round(Math.abs(minusK));
+      $scope.minusL = Math.round(Math.abs(minusL));
+      $scope.minusF = Math.round(Math.abs(minusF));
+      $scope.minusS = Math.round(Math.abs(minusS));
     }
 })
 

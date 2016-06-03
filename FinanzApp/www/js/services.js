@@ -59,7 +59,8 @@ angular.module('starter.services', [])
         gesamtbetragOTF:0,
         bezuegebetragOTF:0,
         abzuegebetragOTF:0,  
-        umsatzList:[{posID:0, datum:"2014-02-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:45.01}]
+        umsatzList:[{posID:0, datum:"2014-02-01T23:28:56.782Z", kategorie:"Mobilitaet",beschreibung:"beschr",betrag:45.01},
+                    {posID:1, datum:"2013-01-01T23:28:56.782Z", kategorie:"Haushalt",beschreibung:"beschr",betrag:-12.23}]
       },{ 
         id:1,
         bezeichnung: 'Bankkonto', 
@@ -437,6 +438,162 @@ angular.module('starter.services', [])
         for(var i = 0; i < umsatzList.length; ++i) {  
           if(umsatzList[i].kategorie.valueOf()==new String("Sonstiges").valueOf()){
             sum = sum + umsatzList[i].betrag;
+          }
+        }
+        return sum;
+      },         
+      
+      //nach Kategorie Mobilität sortierte Summe der Einnahmen
+      einnahmeNachKatM: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Mobilitaet").valueOf()){
+            if (umsatzList[i].betrag > 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },   
+      
+      //nach Kategorie Haushalt sortierte Summe der Einnahmen
+      einnahmeNachKatH: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Haushalt").valueOf()){
+            if (umsatzList[i].betrag > 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },   
+      
+      //nach Kategorie Kleidung sortierte Summe der Einnahmen
+      einnahmeNachKatK: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Kleidung").valueOf()){
+            if (umsatzList[i].betrag > 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },   
+      
+      //nach Kategorie Lebensmittel sortierte Summe der Einnahmen
+      einnahmeNachKatL: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Lebensmittel").valueOf()){
+            if (umsatzList[i].betrag > 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },   
+      
+      //nach Kategorie Freizeit sortierte Summe der Einnahmen
+      einnahmeNachKatF: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Freizeit").valueOf()){
+            if (umsatzList[i].betrag > 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },
+      
+      //nach Kategorie Sonstige sortierte Summe der Einnahmen
+      einnahmeNachKatS: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Sonstiges").valueOf()){
+            if (umsatzList[i].betrag > 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },         
+      
+      //nach Kategorie Mobilität sortierte Summe der Ausgaben
+      ausgabeNachKatM: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Mobilitaet").valueOf()){
+            if (umsatzList[i].betrag < 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },   
+      
+      //nach Kategorie Haushalt sortierte Summe der Ausgaben
+      ausgabeNachKatH: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Haushalt").valueOf()){
+            if (umsatzList[i].betrag < 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },   
+      
+      //nach Kategorie Kleidung sortierte Summe der Ausgaben
+      ausgabeNachKatK: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Kleidung").valueOf()){
+            if (umsatzList[i].betrag < 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },   
+      
+      //nach Kategorie Lebensmittel sortierte Summe der Ausgaben
+      ausgabeNachKatL: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Lebensmittel").valueOf()){
+            if (umsatzList[i].betrag < 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },   
+      
+      //nach Kategorie Freizeit sortierte Summe der Ausgaben
+      ausgabeNachKatF: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Freizeit").valueOf()){
+            if (umsatzList[i].betrag < 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
+          }
+        }
+        return sum;
+      },
+      
+      //nach Kategorie Sonstige sortierte Summe der Ausgaben
+      ausgabeNachKatS: function(umsatzList) {     
+        sum=0.0;
+        for(var i = 0; i < umsatzList.length; ++i) {  
+          if(umsatzList[i].kategorie.valueOf()==new String("Sonstiges").valueOf()){
+            if (umsatzList[i].betrag < 0.0){
+              sum = sum + umsatzList[i].betrag;
+            }
           }
         }
         return sum;
