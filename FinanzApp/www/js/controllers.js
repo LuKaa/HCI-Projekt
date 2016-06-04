@@ -76,43 +76,41 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
 
 .controller('BenachrichtigungenCtrl', function($scope, $ionicPopup, $location, FinanzService) {
   
-  //bereits gespeicherte Wochentage werden übergeben (true oder false)
-  $scope.montag = FinanzService.getMontag();
-  $scope.dienstag = FinanzService.getDienstag();
-  $scope.mittwoch = FinanzService.getMittwoch();
-  $scope.donnerstag = FinanzService.getDonnerstag();
-  $scope.freitag = FinanzService.getFreitag();
-  $scope.samstag = FinanzService.getSamstag();
-  $scope.sonntag = FinanzService.getSonntag();
-  
+  $scope.item = {
+    mo:FinanzService.getTag("mo"),
+    di:FinanzService.getTag("di"),
+    mi:FinanzService.getTag("mi"),
+    do:FinanzService.getTag("do"),
+    fr:FinanzService.getTag("fr"),
+    sa:FinanzService.getTag("sa"),
+    so:FinanzService.getTag("so")
+  };
+    
   //gespeicherte Uhrzeit wird ausgelesen
   $scope.time = FinanzService.getUhrzeit();
   
   //Uhrzeit wird gespeichert
   $scope.saveUhrzeit = function(time) {
     FinanzService.saveUhrzeit(time);
-  }
-  
-  //Wochentage werden gespeichert
-  $scope.saveTage = function(item) {
-    if(item!=null)
-    {
-      FinanzService.saveBenachrichtigungen(item);
-      
-      var alertPopup = $ionicPopup.alert({
+    
+    var alertPopup = $ionicPopup.alert({
           title: 'Benachrichtigungen',
           template: 'Benachrichtigungen wurden erfolgreich geändert.'
         });
       $location.path("/app/einstellungen"); 
-    }
-    else
-    {
-      var alertPopup = $ionicPopup.alert({
-          title: 'Benachrichtigungen',
-          template: 'Es wurden keine Benachrichtigungen geändert.'
-        });
-        $location.path("/app/einstellungen"); 
-    }
+  }
+  
+  //Wochentage werden gespeichert
+  $scope.saveTage = function(tag) {
+
+      if(FinanzService.getTag(tag)==true)
+      {
+          FinanzService.saveTag(tag, false);
+      }
+      else
+      {
+        FinanzService.saveTag(tag, true);
+      }
   }
 })
 

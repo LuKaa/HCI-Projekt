@@ -235,6 +235,69 @@ angular.module('starter.services', [])
         user.benachrichtigungen.samstag = newBenachrichtigungen.sa;
         user.benachrichtigungen.sonntag = newBenachrichtigungen.so;
       },
+      
+      getTag:function(tag)
+      {
+        if(tag=="mo")
+        {
+           return user.benachrichtigungen.montag;
+        }
+        else if(tag=="di")
+        {
+            return user.benachrichtigungen.dienstag;
+        }
+        else if(tag=="mi")
+        {
+            return user.benachrichtigungen.mittwoch;
+        }
+        else if(tag=="do")
+        {
+            return user.benachrichtigungen.donnerstag;
+        }
+        else if(tag=="fr")
+        {
+            return user.benachrichtigungen.freitag;
+        }
+        else if(tag=="sa")
+        {
+            return user.benachrichtigungen.samstag;
+        }
+        else if(tag=="so")
+        {
+            return user.benachrichtigungen.sonntag;
+        }
+      },
+      saveTag:function(tag,wert)
+      {
+        if(tag=="mo")
+        {
+           user.benachrichtigungen.montag = wert;
+        }
+        else if(tag=="di")
+        {
+           user.benachrichtigungen.dienstag = wert;
+        }
+        else if(tag=="mi")
+        {
+           user.benachrichtigungen.mittwoch = wert;
+        }
+        else if(tag=="do")
+        {
+           user.benachrichtigungen.donnerstag = wert;
+        }
+        else if(tag=="fr")
+        {
+           user.benachrichtigungen.freitag = wert;
+        }
+        else if(tag=="sa")
+        {
+           user.benachrichtigungen.samstag = wert;
+        }
+        else if(tag=="so")
+        {
+           user.benachrichtigungen.sonntag = wert;
+        }
+      },
       saveUhrzeit: function(newUhrzeit)
       {
         user.benachrichtigungen.uhrzeit = newUhrzeit;
