@@ -9,7 +9,7 @@ angular.module('starter.services', [])
   
   var user = 
     {
-      passwort:'',
+      passwort:'passwort',
       benachrichtigungen: 
         {
           montag: false,
