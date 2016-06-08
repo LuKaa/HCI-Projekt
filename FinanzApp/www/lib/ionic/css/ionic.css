@@ -6623,12 +6623,6 @@ button.item.item-button-right {
  * A card and list-inset are close to the same thing, except a card as a box shadow.
  */
 .card,
-
-.no-list-inset {
-  overflow: hidden;
-  border-radius: 2px;
-  background-color: #fff; }
-
 .list-inset {
   overflow: hidden;
   margin: 20px 10px;
@@ -6637,7 +6631,7 @@ button.item.item-button-right {
 
 .card {
   padding-top: 1px;
-  padding-bottom: 4px;
+  padding-bottom: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
   .card .item {
     border-left: 0;

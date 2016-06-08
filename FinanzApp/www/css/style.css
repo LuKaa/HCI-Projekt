@@ -4,3 +4,14 @@ h4{
 }
 
 
+.checkbox{
+
+   background: transparent url(../img/add.svg ) no-repeat 0 50%
+}
+.checked{
+   background: transparent url(../img/remove.svg ) no-repeat 80% 50%
+}
+
+$(".checkbox").click(function(){
+    $(this).toggleClass('checked')
+});
